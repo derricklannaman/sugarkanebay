@@ -7,8 +7,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    = render 'shared/top_level_navbar'
+
     .notice
       = notice
     .alert
       = alert
-    = yield
+
+
+    .container
+      = yield
