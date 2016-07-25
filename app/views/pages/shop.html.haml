@@ -1,1 +1,6 @@
 %h1 Dinner Index Page
+
+%ul
+  - @meals.each do |meal|
+    %li
+      = link_to meal.name, meal_path(meal.id)

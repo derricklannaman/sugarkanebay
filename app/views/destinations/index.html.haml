@@ -1,0 +1,7 @@
+%h1 Destinations list page
+%p This page will show all destinations and provide a link to each
+
+%ul
+  - @destinations.each do |destination|
+    %li
+      = link_to destination.name, "/discover/#{destination.name}/#{destination.id}"
