@@ -1,0 +1,6 @@
+%h1 Meals details page
+%p where a user can click a order button
+
+%div
+  = @meal.name
+  = button_to "Order", "/order", params: {item_id: @meal.id, item_name: @meal.name, cart: current_user.cart}

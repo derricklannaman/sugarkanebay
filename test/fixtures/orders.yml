@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  meal: one
+  total: 9.99
+  order_items: MyString
+
+two:
+  user: two
+  meal: two
+  total: 9.99
+  order_items: MyString
