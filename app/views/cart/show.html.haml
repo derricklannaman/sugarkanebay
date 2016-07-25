@@ -1,0 +1,6 @@
+%h1= "#{current_user.firstname}'s Cart"
+
+%ul
+  - @orders.each do |order|
+    %li
+      = order.order_items
