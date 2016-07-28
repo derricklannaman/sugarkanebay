@@ -1,6 +1,13 @@
 %h1 Meals details page
 %p where a user can click a order button
+.row
+  .col-sm-4
+    %hr/
+    %div
+      = @meal.name
+      =# @quantity
+      = button_to "Order", "/order", params: {item_id: @meal.id, item_name: @meal.name}
+  .col-sm-4
+    %hr/
+    %h3 something else
 
-%div
-  = @meal.name
-  = button_to "Order", "/order", params: {item_id: @meal.id, item_name: @meal.name, cart: current_user.cart}

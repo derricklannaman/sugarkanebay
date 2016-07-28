@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725200118) do
+ActiveRecord::Schema.define(version: 20160728201242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "item"
+    t.string   "owner_name"
     t.decimal  "price"
     t.integer  "quantity"
     t.decimal  "total"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160725200118) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "order_status", default: "active"
+    t.integer  "quantity",     default: 0
     t.index ["cart_id"], name: "index_orders_on_cart_id", using: :btree
     t.index ["meal_id"], name: "index_orders_on_meal_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -68,6 +69,14 @@ ActiveRecord::Schema.define(version: 20160725200118) do
     t.string   "firstname"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.text     "lastname"
+    t.text     "phone"
+    t.text     "country"
+    t.text     "address1"
+    t.text     "address2"
+    t.text     "city"
+    t.text     "state"
+    t.text     "zip"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

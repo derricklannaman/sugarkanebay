@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'discover/:destination_name/:id', to: 'destinations#discovery', as: 'destination_discovery'
   get 'cart/:id', to: 'cart#show', as: 'cart'
+  get 'checkout', to: 'cart#checkout'
 
   resources :destinations, only: [:index]
   resources :meals, only: [:index, :show]

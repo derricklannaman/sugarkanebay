@@ -9,10 +9,11 @@
   %body
     = render 'shared/top_level_navbar'
 
-    .notice
-      = notice
-    .alert
-      = alert
+    .container
+      .notice
+        = notice
+      .alert
+        = alert
 
     .container
       = yield
