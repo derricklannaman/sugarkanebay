@@ -35,8 +35,13 @@ class OrderController < ApplicationController
 
   def subtract_item
     order = Order.find(params[:order_id])
-    order.quantity -= 1
-    order.save!
+    if order.quantity == 1
+      order.destroy
+      flash[:notice] = "#{order.order_items} has been removed from your cart"
+    else
+      order.quantity -= 1
+      order.save!
+    end
     redirect_back fallback_location: cart_path(current_user.cart)
   end
 
