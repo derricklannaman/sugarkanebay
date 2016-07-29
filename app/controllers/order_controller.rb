@@ -8,10 +8,12 @@ class OrderController < ApplicationController
     if current_user.cart.present?
       cart = current_user.cart
       order =  Order.find_or_create_by(order_items: params[:item_name])
+      meal = Meal.find(params[:item_id])
       order.user_id = current_user.id if order.user_id.blank?
       order.meal_id = params[:item_id].to_i if order.meal_id.blank?
       order.cart_id = cart.id if order.cart_id.blank?
-      order.quantity += 1
+      count = order.quantity += 1
+      order.total = meal.price * count
       order.save!
     else
       cart = Cart.create!(user_id: current_user.id, owner_name: current_user.firstname, price: '', quantity: '', total: '')
@@ -28,18 +30,22 @@ class OrderController < ApplicationController
 
   def add_item
     order = Order.find(params[:order_id])
-    order.quantity += 1
+    meal = Meal.find(order.meal_id)
+    count = order.quantity += 1
+    order.total = meal.price * count
     order.save!
     redirect_back fallback_location: cart_path(current_user.cart)
   end
 
   def subtract_item
     order = Order.find(params[:order_id])
+    meal = Meal.find(order.meal_id)
     if order.quantity == 1
       order.destroy
       flash[:notice] = "#{order.order_items} has been removed from your cart"
     else
-      order.quantity -= 1
+      count = order.quantity -= 1
+      order.total = meal.price * count
       order.save!
     end
     redirect_back fallback_location: cart_path(current_user.cart)

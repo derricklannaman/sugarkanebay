@@ -1,6 +1,9 @@
 - @orders.each do |order|
   %li
     = order.order_items
-    %span=order.quantity
+    %span= order.quantity
+    \|
+    %span= order.total
+    \|
     %span= link_to "+", order_add_item_path(order.id), method: :post
     %span= link_to "x", order_subtract_item_path(order.id), method: :delete
