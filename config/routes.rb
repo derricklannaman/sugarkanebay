@@ -13,5 +13,8 @@ Rails.application.routes.draw do
 
   resources :destinations, only: [:index]
   resources :meals, only: [:index, :show]
-  resources :order
+  resources :order do
+    post 'add_item'
+    delete 'subtract_item'
+  end
 end

@@ -26,4 +26,18 @@ class OrderController < ApplicationController
     redirect_to shop_path
   end
 
+  def add_item
+    order = Order.find(params[:order_id])
+    order.quantity += 1
+    order.save!
+    redirect_back fallback_location: cart_path(current_user.cart)
+  end
+
+  def subtract_item
+    order = Order.find(params[:order_id])
+    order.quantity -= 1
+    order.save!
+    redirect_back fallback_location: cart_path(current_user.cart)
+  end
+
 end
