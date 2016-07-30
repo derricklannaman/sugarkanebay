@@ -63,7 +63,12 @@
     - if current_user.cart
       = render partial: 'shared/ordered_items', locals: {orders: @orders}
 
-
+  .col-sm-4
+    %h3
+      Total
+    %hr/
+    - if current_user.cart
+      = render 'cart_total'
 
 
 
