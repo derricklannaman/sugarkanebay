@@ -17,4 +17,5 @@ Rails.application.routes.draw do
     post 'add_item'
     delete 'subtract_item'
   end
+  resources :charges
 end
