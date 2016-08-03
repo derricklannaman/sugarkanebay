@@ -4,7 +4,11 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @amount = 500
+    amount = params[:amount].keys.first.to_f * 100
+    @amount = amount.to_i
+
+    # TODO: create an alternate ship to address not related to the user
+    current_user.update(user_params)
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -18,8 +22,30 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
+    current_user.cart.orders.each do |order|
+      if order.order_status == "active"
+        order.order_status = "inactive"
+        order.save!
+      # else
+      #   order.order_status = "active"
+      #   order.save!
+      end
+    end
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
   end
+
+
+
+  private
+
+    def user_params
+      params.require(:user).permit(:firstname, :lastname, :email, :address1,
+                                   :address2, :city, :state, :zip, :phone)
+    end
+
 end
+
+

@@ -3,18 +3,19 @@ class CartController < ApplicationController
   before_action :check_cart_exist, only: :show
 
   def show
-    @orders = current_user.cart.orders.sort if current_user.cart.present?
+    @orders = current_user.cart.orders.where(order_status: 'active').sort if current_user.cart.present?
     cart_total
- end
+  end
 
   def checkout
-    @orders = current_user.cart.orders.sort
+    @orders = current_user.cart.orders.where(order_status: 'active').sort
     cart_total
   end
 
   def cart_total
     unless current_user.cart.blank?
-      cart_total = current_user.cart.orders.pluck(:total).sum
+      # binding.pry
+      cart_total = current_user.cart.orders.where(order_status: 'active').pluck(:total).sum
       current_user.cart.total = cart_total
       current_user.cart.save!
       @cart_total = current_user.cart.total
