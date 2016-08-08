@@ -11,10 +11,12 @@
     - if current_user.cart
       = render partial: 'shared/ordered_items', locals: {orders: @orders}
 
-  .col-sm-4
+  .col-sm-5
     / TODO: fix this ugly shit
     %h3
-      Previous Orders
+      Orders Pending Shipping
+    %p
+      A text confirmation will be sent when your order is shipped.
     %hr/
     - if current_user.cart
       - @prev_orders.each do |order|
