@@ -12,9 +12,16 @@ class CartController < ApplicationController
     cart_total
   end
 
+  def account
+    if current_user.cart.present?
+      @orders = current_user.cart.orders.where(order_status: 'active').sort
+      previous_orders = current_user.cart.orders.where(order_status: 'inactive').order(created_at: :desc)
+      @prev_orders = previous_orders.group_by { |order| order.created_at.to_date }.to_a
+    end
+  end
+
   def cart_total
     unless current_user.cart.blank?
-      # binding.pry
       cart_total = current_user.cart.orders.where(order_status: 'active').pluck(:total).sum
       current_user.cart.total = cart_total
       current_user.cart.save!

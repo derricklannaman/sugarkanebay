@@ -26,11 +26,10 @@ class ChargesController < ApplicationController
       if order.order_status == "active"
         order.order_status = "inactive"
         order.save!
-      # else
-      #   order.order_status = "active"
-      #   order.save!
       end
     end
+
+    redirect_to controller: 'cart', action: 'account', locals: { paid: @amount }
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
