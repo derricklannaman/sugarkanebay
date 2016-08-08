@@ -5,9 +5,14 @@
     %hr/
     %div
       = @meal.name
-      =# @quantity
-      = button_to "Order", "/order", params: {item_id: @meal.id, item_name: @meal.name}
+      = form_tag "/order" do
+        = hidden_field_tag 'item_id', @meal.id
+        = hidden_field_tag 'item_name', @meal.name
+        = number_field_tag 'quantity', 1, min: 1, max: 10
+        = submit_tag "Order"
+
   .col-sm-4
     %hr/
-    %h3 something else
+    %h5= "You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart."
 
+    = link_to "Go to Cart", current_user.cart
