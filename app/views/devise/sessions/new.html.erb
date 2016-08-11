@@ -17,8 +17,8 @@
           <%= f.label :remember_me %>
         </div>
       <% end -%>
-
       <div class="form-group">
+          <%= hidden_field_tag :redirect_to, request.path %>
           <%= f.submit "Log in", class: "btn btn-primary btn-block btn-lg" %>
       </div>
     <% end %>

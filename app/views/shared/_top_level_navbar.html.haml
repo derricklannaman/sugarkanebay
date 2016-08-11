@@ -15,9 +15,9 @@
           \|
           %span= link_to "Account", account_path
       - else
-        = link_to "Sign Up", new_user_registration_path
+        = link_to "Sign Up", new_user_registration_path(redirect_to: request.path)
         \|
-        = link_to "Log In", new_user_session_path
+        = link_to "Log In", new_user_session_path(redirect_to: request.path)
       %span=link_to "Shop", shop_path
       %span=link_to "How it works", how_path
       %span=link_to "About", about_path
