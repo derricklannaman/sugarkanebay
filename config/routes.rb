@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   get 'how-it-works', to: 'pages#how_it_works', as: 'how'
 
   get 'discover/:destination_name/:id', to: 'destinations#discovery', as: 'destination_discovery'
+
+  # Interactive Page Routing
+  ["music", "foods", "art", "geography", "culture", "political", "points_of_interest"].each do |location|
+    get "discover/:destination_name/:id/#{location}", to: "destinations##{location}", as: "destination_#{location}"
+  end
+
+
   get 'cart/:id', to: 'cart#show', as: 'cart'
   get 'checkout', to: 'cart#checkout'
   get 'account', to: 'cart#account'

@@ -1,4 +1,12 @@
-%h1 Destination Discovery Page
+%h1= "#{@destination.name} Discovery Page"
 %p This page will be the destination's immersive "landing page"
+
+= link_to "[Foods]", destination_foods_path
+= link_to "[Points of Interest]", destination_points_of_interest_path
+= link_to "[Music]", destination_music_path
+= link_to "[Geography]", destination_geography_path
+= link_to "[Culture]", destination_culture_path
+= link_to "[Art]", destination_art_path
+= link_to "[Political]", destination_political_path
 
 = link_to "Shop", shop_path
