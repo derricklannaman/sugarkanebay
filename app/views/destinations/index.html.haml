@@ -1,7 +1,11 @@
-%h1 Destinations list page
-%p This page will show all destinations and provide a link to each
+%div{class: "container #{controller_name}-#{action_name}"}
+  %h1 Destinations list page
+  %p This page will show all destinations and provide a link to each
 
-%ul
+
   - @destinations.each do |destination|
-    %li
-      = link_to destination.name, "/discover/#{destination.name}/#{destination.id}"
+    .row
+      .container.destination-index-image
+        = link_to image_tag(destination.index_image, class: "destinations-index__location"),  "/discover/#{destination.name}/#{destination.id}"
+        .name-bar= destination.name
+  =# image_tag('sugarKanebay-city-list.png', size: '900')

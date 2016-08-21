@@ -6,14 +6,10 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+
+  %body{class: "#{controller_name}-#{action_name}"}
     = render 'shared/top_level_navbar'
+    = render 'shared/messages'
 
-    .container
-      .notice
-        = notice
-      .alert
-        = alert
-
-    .container
-      = yield
+    = yield
+    = render 'shared/footer_navigation'

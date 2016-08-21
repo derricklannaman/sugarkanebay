@@ -7,6 +7,7 @@ class DestinationsController < ApplicationController
   end
 
   def discovery
+    render layout: "immersive_landing"
   end
 
   def music
@@ -35,5 +36,4 @@ class DestinationsController < ApplicationController
     def find_destination
       @destination = Destination.find(params[:id])
     end
-
 end

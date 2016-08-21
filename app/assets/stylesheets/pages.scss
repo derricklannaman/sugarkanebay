@@ -1,0 +1,40 @@
+/*Page Specific Styles*/
+body.pages-index {
+  .billboard-wrapper {
+    background-image: url("tropical_paradise.jpg");
+    background-size: cover;
+    min-height: 500px;
+  }
+}
+
+body.pages-about {
+  .billboard-wrapper {
+    background-image: url("location-weather-panel.png");
+    background-size: cover;
+    min-height: 500px;
+  }
+}
+
+.destinations-index__location {
+  width: 750px;
+  height: 311px;
+}
+
+.name-bar {
+  position: relative;
+  width: 750px;
+  top: -311px;
+  text-align: center;
+  color: #FFF;
+  font-size: 26px;
+  background-color: rgba(0,0,0, .3);
+}
+
+.location-blurb {
+  border: 4px solid red;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  float: right;
+  margin-right: 90px;
+}

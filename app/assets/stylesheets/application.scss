@@ -10,9 +10,28 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require material.min.css
  *= require_tree .
  *= require_self
  */
+
+.red {
+  border: 1px solid red;
+  height: 400px;
+  margin: 5px 0;
+}
+
+@media (max-width: 839px) and (min-width: 480px) {
+  .mdl-cell--3-col, .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
+  width: calc(32.5% - 16px);
+  }
+}
+
+@media (max-width: 479px) {
+  .mdl-cell--3-col, .mdl-cell--3-col-phone.mdl-cell--3-col-phone {
+      width: calc(100% - 16px);
+  }
+}
 
 @import "bootstrap";
 @import "bootstrap-sprockets";
