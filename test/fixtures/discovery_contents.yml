@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  destinations: one
+  title: MyString
+  thumbnail: MyString
+  description: MyText
+  immersive_type: MyString
+
+two:
+  destinations: two
+  title: MyString
+  thumbnail: MyString
+  description: MyText
+  immersive_type: MyString

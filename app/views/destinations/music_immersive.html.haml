@@ -1,0 +1,97 @@
+%svg.hidden
+  %defs
+    %symbol#icon-arrow{:viewbox => "0 0 24 24"}
+      %title arrow
+      %polygon{:points => "6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "}
+
+%main.landing-layout
+  / Landing wrap with sections
+  .landing-wrap
+    %section.landing.landing--above
+    %section.landing.landing--beneath
+  / /landing-wrap
+  / Landing header with title
+  %header.landing-header
+    %h1.landing-header__title{"aria-label" => "Blue Divers"}
+      %span R
+      %span e
+      %span g
+      %span g
+      %span a
+      %span e
+      %span N
+      %span a
+      %span t
+      %span i
+      %span o
+      %span n
+    .landing-header__tagline Enter
+  / /landing-header
+  / Trigger button for layout change
+  %button.button.button--trigger{"aria-label" => "View more"}
+    %svg.icon.icon--grid.icon--shown
+      %use{"xlink:href" => "#icon-grid"}
+    %svg.icon.icon--arrow-up.icon--hidden
+      %use{"xlink:href" => "#icon-arrow"}
+  / Featured content that gets shown after the layout opens
+  %section.featured-content
+    %ul.featured-list
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d1.svg', class: 'featured-list__img')
+          %h3.featured-list__title Aqua Lung
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d2.svg', class: 'featured-list__img')
+          %h3.featured-list__title Survival Guide
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d3.svg', class: 'featured-list__img')
+          %h3.featured-list__title Safety Lessons
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d4.svg', class: 'featured-list__img')
+          %h3.featured-list__title Oxygen 101
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d5.svg', class: 'featured-list__img')
+          %h3.featured-list__title Snorkeling
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d6.svg', class: 'featured-list__img')
+          %h3.featured-list__title First Class
+  /featured-content
+
+  %section.different-featured-content
+    %ul.featured-list
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d1.svg', class: 'featured-list__img')
+          %h3.featured-list__title Aqua Lung
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d2.svg', class: 'featured-list__img')
+          %h3.featured-list__title Survival Guide
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d3.svg', class: 'featured-list__img')
+          %h3.featured-list__title Safety Lessons
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d4.svg', class: 'featured-list__img')
+          %h3.featured-list__title Oxygen 101
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d5.svg', class: 'featured-list__img')
+          %h3.featured-list__title Snorkeling
+      %li.featured-list__item
+        %a.featured-list__link{:href => "#"}
+          = image_tag('icons/d6.svg', class: 'featured-list__img')
+          %h3.featured-list__title First Class
+
+  Codrops header
+  %header.codrops-header
+    .codrops-links
+      = link_to destination_discovery_path do
+        %svg.icon.icon--arrow
+          %use{"xlink:href" => "#icon-arrow"}

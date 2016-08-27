@@ -10,10 +10,9 @@ Rails.application.routes.draw do
   get 'discover/:destination_name/:id', to: 'destinations#discovery', as: 'destination_discovery'
 
   # Interactive Page Routing
-  ["music", "foods", "art", "geography", "culture", "political", "points_of_interest"].each do |location|
-    get "discover/:destination_name/:id/#{location}", to: "destinations##{location}", as: "destination_#{location}"
+  ["music", "foods", "art", "geography", "culture", "political", "points_of_interest"].each do |type|
+    get "immersive/:destination_name/:id/#{type}", to: "destinations##{type}_immersive", as: "#{type}_immersive"
   end
-
 
   get 'cart/:id', to: 'cart#show', as: 'cart'
   get 'checkout', to: 'cart#checkout'

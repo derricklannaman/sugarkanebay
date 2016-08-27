@@ -4,8 +4,8 @@
 
 
   - @destinations.each do |destination|
-    .row
-      .container.destination-index-image
+    .container.destination-index-image
+      .row
         = link_to image_tag(destination.index_image, class: "destinations-index__location"),  "/discover/#{destination.name}/#{destination.id}"
         .name-bar= destination.name
-  =# image_tag('sugarKanebay-city-list.png', size: '900')
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813223028) do
+ActiveRecord::Schema.define(version: 20160823151049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,28 @@ ActiveRecord::Schema.define(version: 20160813223028) do
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "index_image"
+    t.string   "food_discovery_thumbnail"
+    t.string   "poi_discovery_thumbnail"
+    t.string   "music_discovery_thumbnail"
+    t.string   "geography_discovery_thumbnail"
+    t.string   "culture_discovery_thumbnail"
+    t.string   "art_discovery_thumbnail"
+    t.string   "political_discovery_thumbnail"
+    t.string   "shop_discovery_thumbnail"
+  end
+
+  create_table "discovery_contents", force: :cascade do |t|
+    t.integer  "destination_id"
+    t.string   "title"
+    t.string   "thumbnail"
+    t.text     "description"
+    t.string   "immersive_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["destination_id"], name: "index_discovery_contents_on_destination_id", using: :btree
   end
 
   create_table "meals", force: :cascade do |t|
@@ -87,6 +106,7 @@ ActiveRecord::Schema.define(version: 20160813223028) do
   end
 
   add_foreign_key "carts", "users"
+  add_foreign_key "discovery_contents", "destinations"
   add_foreign_key "meals", "destinations"
   add_foreign_key "orders", "carts"
   add_foreign_key "orders", "meals"

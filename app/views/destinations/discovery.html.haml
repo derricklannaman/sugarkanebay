@@ -1,14 +1,35 @@
-%h1= "#{@destination.name} Discovery Page"
-%p
-  This page will be the destination's immersive
-  = link_to "landing page", "http://tympanus.net/Development/ImageGridEffects/index2.html"
+%svg.hidden
+  %defs
+    %symbol#icon-arrow{:viewbox => "0 0 24 24"}
+      %title arrow
+      %polygon{:points => "6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "}
 
-= link_to "[Foods]", destination_foods_path
-= link_to "[Points of Interest]", destination_points_of_interest_path
-= link_to "[Music]", destination_music_path
-= link_to "[Geography]", destination_geography_path
-= link_to "[Culture]", destination_culture_path
-= link_to "[Art]", destination_art_path
-= link_to "[Political]", destination_political_path
 
-= link_to "Shop", shop_path
+%div
+  %header.immersive-header
+    .codrops-links
+      = link_to destinations_path do
+        %svg.icon.icon--arrow
+          %use{"xlink:href" => "#icon-arrow"}
+
+
+
+    %h1
+      = "Discover #{@destination.name.upcase}"
+      %span Country tag line goes here
+  .content
+    .grid
+      - @discovery_contents.each do |content|
+        = link_to content.immersive_type, data: {turbolinks: "false"} do
+          .grid__item
+            .img-wrap= image_tag(content.thumbnail, class: 'immersive-image', id: content.immersive_type)
+            .description.description--grid
+              %h3.text-center= content.title
+              %p
+                = content.description
+
+
+
+
+
+

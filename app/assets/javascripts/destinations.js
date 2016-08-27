@@ -1,39 +1,20 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-$(document).ready(function(){
-  // $('#history-immersive, #food-immersive').on('click', immersivePreview);
 
-  $('.immersive-image').click(immersivePreview);
-
+$(document).on('ready page:load', function() {
+  $('.landing-header__tagline').click(immersiveMorphing);
+  $('button.button.button--trigger').click(reverseImmersiveMorphing);
+  // $('.featured-content').hide();
 });
 
-function immersivePreview() {
-  var image = $(this);
-  var current_image = image[0].id
-  var all_images = $('.immersive-image');
-
-  if(image.hasClass('immersive-preview')) {
-
-    for (var i = 0; i < all_images.length; i++) {
-      if(all_images[i].id != current_image) {
-        $(all_images[i]).removeClass('immersives-hide');
-      }
-    }
-
-    image.addClass('close-immersive-preview');
-    image.removeClass('immersive-preview');
-    // setTimeout(function() {
-    //   image.removeClass('close-immersive-preview');
-    // }, 500);
+  function immersiveMorphing() {
+    var landingLayout = $('.landing-layout');
+    landingLayout.toggleClass('landing-layout--open');
+    // $('.featured-content').hide();
   }
-    else {
-    image.addClass('immersive-preview');
-    image.removeClass('close-immersive-preview');
 
-    for (var i = 0; i < all_images.length; i++) {
-      if(all_images[i].id != current_image) {
-        $(all_images[i]).addClass('immersives-hide');
-      }
-    }
+  function reverseImmersiveMorphing() {
+    var openedLayout = $('.landing-layout.landing-layout--open');
+    openedLayout.removeClass('landing-layout--open');
+    // $('.featured-content').show();
   }
-}
