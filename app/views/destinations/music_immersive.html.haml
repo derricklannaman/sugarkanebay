@@ -5,12 +5,10 @@
       %polygon{:points => "6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "}
 
 %main.landing-layout
-  / Landing wrap with sections
   .landing-wrap
-    %section.landing.landing--above
-    %section.landing.landing--beneath
-  / /landing-wrap
-  / Landing header with title
+    %section.landing.landing--above{:style => "background-image: url(#{image_path(@destination.index_image)});"}
+    %section.landing.landing--beneath{:style => "background-image: url(#{image_path(@destination.music_discovery_thumbnail)});"}
+
   %header.landing-header
     %h1.landing-header__title{"aria-label" => "Blue Divers"}
       %span R
@@ -19,79 +17,126 @@
       %span g
       %span a
       %span e
+      %br/
       %span N
       %span a
       %span t
       %span i
       %span o
       %span n
-    .landing-header__tagline Enter
-  / /landing-header
-  / Trigger button for layout change
+    .immersive-morph-button Bob Marley
+
+  / Trigger button for layout change - reverse morph
   %button.button.button--trigger{"aria-label" => "View more"}
-    %svg.icon.icon--grid.icon--shown
-      %use{"xlink:href" => "#icon-grid"}
-    %svg.icon.icon--arrow-up.icon--hidden
+    %svg.icon.icon--arrow.icon--hidden
       %use{"xlink:href" => "#icon-arrow"}
-  / Featured content that gets shown after the layout opens
-  %section.featured-content
-    %ul.featured-list
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d1.svg', class: 'featured-list__img')
-          %h3.featured-list__title Aqua Lung
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d2.svg', class: 'featured-list__img')
-          %h3.featured-list__title Survival Guide
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d3.svg', class: 'featured-list__img')
-          %h3.featured-list__title Safety Lessons
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d4.svg', class: 'featured-list__img')
-          %h3.featured-list__title Oxygen 101
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d5.svg', class: 'featured-list__img')
-          %h3.featured-list__title Snorkeling
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d6.svg', class: 'featured-list__img')
-          %h3.featured-list__title First Class
-  /featured-content
 
-  %section.different-featured-content
-    %ul.featured-list
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d1.svg', class: 'featured-list__img')
-          %h3.featured-list__title Aqua Lung
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d2.svg', class: 'featured-list__img')
-          %h3.featured-list__title Survival Guide
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d3.svg', class: 'featured-list__img')
-          %h3.featured-list__title Safety Lessons
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d4.svg', class: 'featured-list__img')
-          %h3.featured-list__title Oxygen 101
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d5.svg', class: 'featured-list__img')
-          %h3.featured-list__title Snorkeling
-      %li.featured-list__item
-        %a.featured-list__link{:href => "#"}
-          = image_tag('icons/d6.svg', class: 'featured-list__img')
-          %h3.featured-list__title First Class
+  %header.link-back-header
+    = link_to destination_discovery_path do
+      %svg.icon.icon--arrow
+        %use{"xlink:href" => "#icon-arrow"}
 
-  Codrops header
-  %header.codrops-header
-    .codrops-links
-      = link_to destination_discovery_path do
-        %svg.icon.icon--arrow
-          %use{"xlink:href" => "#icon-arrow"}
+%main.landing-layout
+  .landing-wrap
+    .h3 Content 1
+    .container
+      %p
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+%main.landing-layout
+  .landing-wrap2
+    %section.landing.landing--above2{:style => "background-image: url(#{image_path(@destination.shop_discovery_thumbnail)});"}
+      .h3 Image 2
+    %section.landing2.landing--beneath2{:style => "background-image: url(#{image_path(@destination.culture_discovery_thumbnail)});"}
+
+    %header.landing-header2
+      %h1.landing-header__title{"aria-label" => "Blue Divers"}
+        %span F
+        %span o
+        %span o
+        %span d
+        %span s
+        %br/
+        %span N
+        %span a
+        %span t
+        %span i
+        %span o
+        %span n
+      .immersive-morph-button second trigger
+
+    / Trigger button for layout change - reverse morph
+    %button.button.button--trigger{"aria-label" => "View more"}
+      %svg.icon.icon--arrow.icon--hidden
+        %use{"xlink:href" => "#icon-arrow"}
+
+%main.landing-layout
+  .landing-wrap
+    .h3 Content 2
+    .container
+      %p
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,13 +7,9 @@
 
 %div
   %header.immersive-header
-    .codrops-links
-      = link_to destinations_path do
-        %svg.icon.icon--arrow
-          %use{"xlink:href" => "#icon-arrow"}
-
-
-
+    = link_to destinations_path do
+      %svg.icon.icon--arrow
+        %use{"xlink:href" => "#icon-arrow"}
     %h1
       = "Discover #{@destination.name.upcase}"
       %span Country tag line goes here

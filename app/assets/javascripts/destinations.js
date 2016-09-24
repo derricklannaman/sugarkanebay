@@ -2,19 +2,19 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('ready page:load', function() {
-  $('.landing-header__tagline').click(immersiveMorphing);
+  $('.immersive-morph-button').click(immersiveMorphing);
   $('button.button.button--trigger').click(reverseImmersiveMorphing);
   // $('.featured-content').hide();
 });
 
   function immersiveMorphing() {
-    var landingLayout = $('.landing-layout');
+    var button = $(this);
+    var landingLayout = button.closest('.landing-layout');
     landingLayout.toggleClass('landing-layout--open');
-    // $('.featured-content').hide();
   }
 
   function reverseImmersiveMorphing() {
-    var openedLayout = $('.landing-layout.landing-layout--open');
+    var button = $(this);
+    var openedLayout = button.closest('.landing-layout.landing-layout--open');
     openedLayout.removeClass('landing-layout--open');
-    // $('.featured-content').show();
   }

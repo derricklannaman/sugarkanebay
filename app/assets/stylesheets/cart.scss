@@ -5,3 +5,32 @@
   background-color: #ccc;
   padding: 5px;
 }
+.fa.fa-shopping-cart.cart {
+  font-size: 3em;
+  background-color: rgb(215, 137, 119);
+  padding: 5px;
+}
+
+svg.checkout__icon {
+  margin-top: 15px;
+}
+
+svg.checkout__icon.destinations {
+  fill: #fff;
+}
+
+span.badge.for-cart {
+  margin-left: -25px;
+  margin-top: -15px;
+  background-color: darkorange;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+div#greeting {
+  /*line-height: 1;*/
+  margin-top: -25px;
+  margin-left: 29px;
+  padding: 0 19px;
+  color: #FFF;
+}

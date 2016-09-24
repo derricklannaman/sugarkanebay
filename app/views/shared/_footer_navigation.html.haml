@@ -1,6 +1,25 @@
-%nav.navbar.navbar-default
-%nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      %a.navbar-brand{:href => root_path}
-        SKB
+%footer.android-footer.mdl-mega-footer
+  .mdl-mega-footer--top-section
+    .mdl-mega-footer--left-section
+      %button.mdl-mega-footer--social-btn
+       
+      %button.mdl-mega-footer--social-btn
+       
+      %button.mdl-mega-footer--social-btn
+    .mdl-mega-footer--right-section
+
+      %a.mdl-typography--font-light{:href => "#top"}
+        Back to Top
+        %i.material-icons expand_less
+  .mdl-mega-footer--middle-section
+    =link_to "Shop", shop_path, class: 'mdl-typography--font-light mdl-navigation__link mdl-typography--text-uppercase footer-section'
+    \ -
+    =link_to "Destinations", destinations_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
+    \ -
+    =link_to "How it works", how_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
+    \ -
+    =link_to "About", about_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
+    .separator
+    %p.mdl-typography--font-light= "SugarKaneKitchen © #{Time.new.year} All Rights Reserved"
+  .mdl-mega-footer--bottom-section
+
