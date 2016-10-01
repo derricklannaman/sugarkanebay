@@ -4,50 +4,11 @@
 
     .text-center
       = link_to "Explore a Destination...", destinations_path, class: 'btn btn-primary btn-lg'
-%section.benefit-list
-  .container
-    %h1.text-center Benefits
-  .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 benefit 1
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 benefit 2
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 benefit 3
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 benefit 4
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
 
-%section.how-it-works-wrapper
-  .container
-    %h1.text-center How it works
-  .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid
-    .demo-chart.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "300px"}
-      %h3 how it works 1
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "300px"}
-      %h3 how it works 2
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "300px"}
-      %h3 how it works 3
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
+= render partial: "benefits"
 
-%section.testimonials
-  .container
-    %h1.text-center Testimonials
-  .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 Testimonial 1
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 Testimonial 2
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 Testimonial 3
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-    .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-      %h4 Testimonial 4
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
+= render partial: "how_it_works"
+
+= render partial: "destinations"
+
+= render partial: "testimonials"
