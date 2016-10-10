@@ -1,14 +1,9 @@
-.billboard-wrapper
+.billboard-wrapper.img-responsive
   .container
     %h1.text-center Authentic Caribbean Food
 
-    .text-center
-      = link_to "Explore a Destination...", destinations_path, class: 'btn btn-primary btn-lg'
-
 = render partial: "benefits"
-
 = render partial: "how_it_works"
-
+= render partial: "meal_gallery"
 = render partial: "destinations"
-
 = render partial: "testimonials"

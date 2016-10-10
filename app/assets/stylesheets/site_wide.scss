@@ -3,6 +3,16 @@
   margin: auto;
 }
 
+.top-bar {
+  height: 50px;
+  border-top: 4px solid Green;
+  background: #424242;
+}
+
+.mdl-layout__header {
+  background-color: transparent;
+}
+
 .notice {
   float: left;
   text-align: center;
@@ -37,4 +47,10 @@ a.mdl-navigation__link.mdl-typography--text-uppercase.footer-section {
 
 a.navigation-logo {
   color: #FFF;
+}
+
+a.access-type {
+  color: #FFF;
+  float: right;
+  padding-right: 65px;
 }

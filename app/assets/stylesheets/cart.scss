@@ -13,6 +13,7 @@
 
 svg.checkout__icon {
   margin-top: 15px;
+  fill: #FFF;
 }
 
 svg.checkout__icon.destinations {
@@ -20,8 +21,8 @@ svg.checkout__icon.destinations {
 }
 
 span.badge.for-cart {
-  margin-left: -25px;
-  margin-top: -15px;
+  margin-left: -32px;
+  margin-top: 0px;
   background-color: darkorange;
   font-size: 16px;
   font-weight: bolder;
@@ -29,7 +30,7 @@ span.badge.for-cart {
 
 div#greeting {
   /*line-height: 1;*/
-  margin-top: -25px;
+  margin-top: 12px;
   margin-left: 29px;
   padding: 0 19px;
   color: #FFF;
@@ -42,4 +43,5 @@ span.cart-display {
   /*position: absolute;*/
   right: 0;
   top: 4em;
+  display: none;
 }

@@ -1,17 +1,20 @@
 .content-wrapper
   %section.benefit-list
     / .container
-    %h1.text-center Benefits
+    %h1.text-center Eat like a local
     .demo-charts.mdl-color--white.mdl-cell.mdl-cell--12-col.mdl-grid
-      .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-        %h4 benefit 1
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-      .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-        %h4 benefit 2
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-      .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-        %h4 benefit 3
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-      .demo-chart.mdl-cell.mdl-cell--4-col.mdl-cell--3-col-desktop{:height => "200px", :viewbox => "0 0 1 1", :width => "200px"}
-        %h4 benefit 4
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
+      .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop
+        .benefit
+          = image_tag('man-on-grill.jpg', class: "selling-point-image")
+          %h4.text-center.benefit-title Authentic Caribbean Cuisine
+          %p.text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
+      .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop
+        .benefit
+          = image_tag('man-on-grill.jpg', class: "selling-point-image")
+          %h4.text-center.benefit-title Freshly Native Ingredients
+          %p.text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
+      .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop
+        .benefit
+          = image_tag('man-on-grill.jpg', class: "selling-point-image")
+          %h4.text-center.benefit-title.display-4 benefit 3
+          %p.text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
