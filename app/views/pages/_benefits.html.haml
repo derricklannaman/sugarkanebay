@@ -1,20 +1,32 @@
 .content-wrapper
-  %section.benefit-list
-    / .container
-    %h1.text-center Eat like a local
-    .demo-charts.mdl-color--white.mdl-cell.mdl-cell--12-col.mdl-grid
-      .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop
-        .benefit
-          = image_tag('man-on-grill.jpg', class: "selling-point-image")
-          %h4.text-center.benefit-title Authentic Caribbean Cuisine
-          %p.text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-      .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop
-        .benefit
-          = image_tag('man-on-grill.jpg', class: "selling-point-image")
-          %h4.text-center.benefit-title Freshly Native Ingredients
-          %p.text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
-      .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-desktop
-        .benefit
-          = image_tag('man-on-grill.jpg', class: "selling-point-image")
-          %h4.text-center.benefit-title.display-4 benefit 3
-          %p.text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!
+  %section.destination-list
+    .container.destination-list
+      %h1.text-center Eat like a local
+      .row.redbox.lift
+        .col-sm-6.col-md-4
+          .thumbnail
+            = image_tag('man-on-grill.jpg', class: "selling-point-image")
+            .caption
+              %h3 Thumbnail label
+              %p ...
+              %p
+                %a.btn.btn-primary{:href => "#", :role => "button"} Button
+
+        .col-sm-6.col-md-4
+          .thumbnail
+            = image_tag('man-on-grill.jpg', class: "selling-point-image")
+            .caption
+              %h3 Thumbnail label
+              %p ...
+              %p
+                %a.btn.btn-primary{:href => "#", :role => "button"} Button
+
+        .col-sm-6.col-md-4
+          .thumbnail
+            = image_tag('man-on-grill.jpg', class: "selling-point-image")
+            .caption
+              %h3 Thumbnail label
+              %p ...
+              %p
+                %a.btn.btn-primary{:href => "#", :role => "button"} Button
+

@@ -1,3 +1,43 @@
+.redbox {
+  border: 2px solid red;
+}
+
+.row.redbox.lift {
+  float: left;
+  margin-top: -15em;
+  margin-bottom: 14em;
+}
+
+.object-box-right {
+  width: 50%;
+  height: 600px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  border: 1px solid;
+}
+
+.object-box-center {
+  width: 80%;
+  margin: auto;
+  height: 600px;
+  border: 1px solid;
+  margin-bottom: 50px;
+}
+
+.object-box {
+  float: left;
+  margin: 10px;
+  border: 1px solid;
+  height: 270px;
+  width: 100%;
+}
+
+section.destination,
+section.how-it-works,
+section.testimonials {
+  margin-bottom: 40px
+}
+
 /*Page Specific Styles*/
 body.pages-index {
   .billboard-wrapper {
@@ -62,6 +102,11 @@ h4.text-center.benefit-title {
   position: relative;
 }
 
+section.destination-list,
+.container.destination-list {
+  border: 2px solid red;
+}
+
 @media screen and (max-width: 1246px) {
    h4.text-center.benefit-title {
       font-size: 27px;
@@ -73,7 +118,6 @@ h4.text-center.benefit-title {
       font-size: 25px;
     }
 }
-
 
 @media screen and (max-width: 768px) {
    h4.text-center.benefit-title {

@@ -1,6 +1,3 @@
-.top-bar
-  = render partial: "shared/application_access"
-
 .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
   .android-header.mdl-layout__header.mdl-layout__header--waterfall
     .mdl-layout__header-row
@@ -10,19 +7,16 @@
       / Add spacer, to align navigation to the right in desktop
       .android-header-spacer.mdl-layout-spacer
       .android-search-box.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label.mdl-textfield--align-right.mdl-textfield--full-width
-        %label.mdl-button.mdl-js-button.mdl-button--icon{:for => "search-field"}
-          %i.material-icons search
-        .mdl-textfield__expandable-holder
-          %input#search-field.mdl-textfield__input{:type => "text"}/
 
       / Top Navigation
       .android-navigation-container
         %nav.android-navigation.mdl-navigation
           %span=link_to "Shop", shop_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
           %span=link_to "Destinations", destinations_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
-          %span=link_to "How it works", how_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
           %span=link_to "About", about_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
           - if user_signed_in?
+            %span=link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'mdl-navigation__link mdl-typography--text-uppercase access-type'
+
             - if current_user.cart.present?
               = link_to "", nil, class: 'shopping-cart' do
 
@@ -32,22 +26,8 @@
                 %span= link_to "Account", account_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
 
           - else
-
-
-  %span.cart-display
-
-  .android-drawer.mdl-layout__drawer
-    %span.mdl-layout-title
-      Sugarkanebay
-    %nav.mdl-navigation
-      %a.mdl-navigation__link{:href => ""} Phones
-      %a.mdl-navigation__link{:href => ""} Tablets
-      %a.mdl-navigation__link{:href => ""} Wear
-      %a.mdl-navigation__link{:href => ""} TV
-      %a.mdl-navigation__link{:href => ""} Auto
-      %a.mdl-navigation__link{:href => ""} One
-      %a.mdl-navigation__link{:href => ""} Play
-      .android-drawer-separator
+            %span=link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'mdl-navigation__link mdl-typography--text-uppercase access-type'
+            %span=link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'mdl-navigation__link mdl-typography--text-uppercase access-type'
 
   .android-content.mdl-layout__content
     =# render 'shared/messages'
