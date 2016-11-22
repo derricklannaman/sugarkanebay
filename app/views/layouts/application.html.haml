@@ -9,9 +9,8 @@
     %script{:src => "https://use.fontawesome.com/4caabbd473.js"}
 
     %link{:href => "https://fonts.googleapis.com/css?family=Coda:800|Cinzel+Decorative:400|Oswald:700|Montserrat+Subrayada|Russo+One", :rel => "stylesheet"}/
+
   %body{class: "#{controller_name}-#{action_name}"}
     = render 'shared/top_level_navbar'
-
     = yield
-
     = render 'shared/footer_navigation'
