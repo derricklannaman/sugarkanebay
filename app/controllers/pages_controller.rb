@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
   def index
+    @destination = Destination.find(1)
+    @discovery_contents = @destination.discovery_contents.limit(4)
   end
 
   def shop

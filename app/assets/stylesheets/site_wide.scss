@@ -1,3 +1,9 @@
+/*font-family: 'Bevan', cursive;
+font-family: 'Alfa Slab One', cursive;
+font-family: 'Cinzel Decorative', cursive;
+font-family: 'Montserrat Subrayada', sans-serif;*/
+/*font-family: 'Exo 2', sans-serif;*/
+/*font-family: 'Russo One', sans-serif;*/
 .content-wrapper {
   max-width: 1400px;
   margin: auto;
@@ -38,6 +44,10 @@ nav.navbar.navbar-default.footer-top {
   border-bottom: none;
 }
 
+.navbar .navbar-inner {
+    padding: 0;
+}
+
 .container.destinations-index {
 
 }
@@ -45,12 +55,52 @@ a.mdl-navigation__link.mdl-typography--text-uppercase.footer-section {
   color: #9e9e9e;
 }
 
-a.navigation-logo {
+.navbar-brand {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.navbar-toggle {
+  z-index:3;
+}
+
+span.sugarkane {
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-size: 2em;
+}
+
+span.kitchen {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.3em;
+  letter-spacing: 0.6em;
+  margin-left: 0.5em;
+}
+/*font-family: 'Coda', cursive;*/
+/*font-family: 'Bevan', cursive;
+font-family: 'Alfa Slab One', cursive;
+font-family: 'Cinzel Decorative', cursive;
+font-family: 'Montserrat Subrayada', sans-serif;*/
+/*font-family: 'Exo 2', sans-serif;*/
+/*font-family: 'Russo One', sans-serif;*/
+/*font-family: 'Oswald', sans-serif;*/
+#navigation-logo {
   color: #FFF;
+  text-align: center;
+  margin: auto;
 }
 
 a.access-type {
   color: #FFF;
   float: right;
   padding-right: 65px;
+}
+
+
+
+.mega-footer {
+  padding: 16px 40px;
+  color: #9e9e9e;
+  background-color: #424242;
 }

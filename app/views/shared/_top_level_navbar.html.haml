@@ -1,33 +1,46 @@
-.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
-  .android-header.mdl-layout__header.mdl-layout__header--waterfall
-    .mdl-layout__header-row
-      %span.android-title.mdl-layout-title
-        = link_to 'SugarkaneKitchen', root_path, class: 'navigation-logo'
+%nav.navbar.navbar-default{:role => "navigation"}
+  / Brand and toggle get grouped for better mobile display
+  .navbar-header
+    %button.navbar-toggle{"data-target" => "#navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
 
-      / Add spacer, to align navigation to the right in desktop
-      .android-header-spacer.mdl-layout-spacer
-      .android-search-box.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label.mdl-textfield--align-right.mdl-textfield--full-width
+  = link_to root_path, class: 'navbar-brand', id: 'navigation-logo' do
+    %span.sugarkane= 'Sugarkane'
+    %br/
+    %span.kitchen= 'Kitchen'
+  / Collect the nav links, forms, and other content for toggling
+  #navbar-collapse-1.collapse.navbar-collapse
+    %ul.nav.navbar-nav.navbar-left
+      %li
+        %a{:href => "#"} Link
+      %li
+        %a{:href => "#"} Link
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        =link_to "Destinations", destinations_path, class: 'text-uppercase'
+      %li
+        =link_to "Shop", shop_path, class: 'text-uppercase'
 
-      / Top Navigation
-      .android-navigation-container
-        %nav.android-navigation.mdl-navigation
-          %span=link_to "Shop", shop_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
-          %span=link_to "Destinations", destinations_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
-          %span=link_to "About", about_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
-          - if user_signed_in?
-            %span=link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'mdl-navigation__link mdl-typography--text-uppercase access-type'
+      - if user_signed_in?
+        %li
+          =link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'text-uppercase access-type'
 
-            - if current_user.cart.present?
-              = link_to "", nil, class: 'shopping-cart' do
+        - if current_user.cart.present?
+          = link_to "", nil, class: 'shopping-cart' do
 
-                = render partial: "shared/cart_image"
+            = render partial: "shared/cart_image"
 
-              .account
-                %span= link_to "Account", account_path, class: 'mdl-navigation__link mdl-typography--text-uppercase'
+          .account
+            %li
+              = link_to "Account", account_path, class: 'text-uppercase'
 
-          - else
-            %span=link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'mdl-navigation__link mdl-typography--text-uppercase access-type'
-            %span=link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'mdl-navigation__link mdl-typography--text-uppercase access-type'
+      - else
+        %li
+          =link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'text-uppercase access-type'
+        %li
+          =link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'text-uppercase access-type'
 
-  .android-content.mdl-layout__content
-    =# render 'shared/messages'
+  / /.navbar-collapse
