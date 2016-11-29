@@ -36,13 +36,27 @@ section.landing.landing--beneath {
 
 @media (max-width: 479px) {
   .mdl-cell--3-col, .mdl-cell--3-col-phone.mdl-cell--3-col-phone {
-      width: calc(100% - 16px);
+    width: calc(100% - 16px);
   }
 }
 
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
+.navbar-default .navbar-nav > li > a:hover{
+  color: #FFF;
+  background-color: rgba(0,0,0, 0.15);
+  transition: 0.5s;
+}
+
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
+}
+
+.thumbnail {
+  padding: 0px;
+  border: none;
+  height: 33em;
+  border-top: 5px solid #FFF;
+  border-radius: 0px;
 }

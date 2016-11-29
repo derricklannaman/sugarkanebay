@@ -11,7 +11,7 @@
     %span.sugarkane= 'Sugarkane'
     %br/
     %span.kitchen= 'Kitchen'
-  / Collect the nav links, forms, and other content for toggling
+
   #navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav.navbar-left
       %li
@@ -23,24 +23,16 @@
         = link_to "Destinations", destinations_path, class: 'text-uppercase'
       %li
         = link_to "Shop", shop_path, class: 'text-uppercase'
+      %li.cart-link
+        = render partial: "shared/cart_image" if user_signed_in? && current_user.cart.present?
+      %li
+        = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'text-uppercase access-type' if user_signed_in?
+      %li
+        =link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'text-uppercase access-type' if user_signed_in? == false
+      %li
+        =link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'text-uppercase access-type' if user_signed_in? == false
 
-      - if user_signed_in?
-        %li
-          =link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'text-uppercase access-type'
 
-        - if current_user.cart.present?
-          = link_to "", nil, class: 'shopping-cart' do
 
-            = render partial: "shared/cart_image"
 
-          .account
-            %li
-              = link_to "Account", account_path, class: 'text-uppercase'
 
-      - else
-        %li
-          =link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'text-uppercase access-type'
-        %li
-          =link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'text-uppercase access-type'
-
-  / /.navbar-collapse

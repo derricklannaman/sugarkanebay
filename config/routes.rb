@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'cart/:id', to: 'cart#show', as: 'cart'
   get 'checkout', to: 'cart#checkout'
   get 'account', to: 'cart#account'
+  get 'admin_dashboard', to: 'admin#dashboard'
 
   resources :destinations, only: [:index]
   resources :meals, only: [:index, :show]

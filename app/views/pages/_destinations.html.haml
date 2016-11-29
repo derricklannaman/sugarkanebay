@@ -1,11 +1,12 @@
-%section.destination.img-responsive
-  %h1.text-center EXPLORE individual destination - inner list of immersive content
-  .object-box-right.pull-right
-    - @discovery_contents.each do |content|
-      = link_to content.immersive_type, data: {turbolinks: "false"} do
-        .grid__item
-          .img-wrap= image_tag(content.thumbnail, class: 'immersive-image img-responsive', id: content.immersive_type)
-          .description.description--grid
-            %h3.text-center= content.title
+.content-wrapper.redbox
+  %section.destination.img-responsive
+    %h1.text-center EXPLORE individual destination - inner list of immersive content
+    .object-box-right.pull-right
+      - @discovery_contents.each do |content|
+        = link_to content.immersive_type, data: {turbolinks: "false"} do
+          .grid__item
+            .img-wrap= image_tag(content.thumbnail, class: 'immersive-image img-responsive', id: content.immersive_type)
+            .description.description--grid
+              %h3.text-center= content.title
 
-  .clearfix
+    .clearfix

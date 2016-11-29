@@ -1,10 +1,14 @@
-// Place all the styles related to the Cart controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.container.pages-shop,
+.cart-show.container {
+  /*height: calc(100vh - 80px);*/
+  height: 100vh;
+}
+
 .account-order-date {
   background-color: #ccc;
   padding: 5px;
 }
+
 .fa.fa-shopping-cart.cart {
   font-size: 3em;
   background-color: rgb(215, 137, 119);
@@ -12,24 +16,33 @@
 }
 
 svg.checkout__icon {
-  margin-top: 15px;
   fill: #FFF;
+}
+
+li.cart-link {
+  margin-top: -10px;
 }
 
 svg.checkout__icon.destinations {
   fill: #fff;
 }
 
+svg.checkout__icon.fill-dark {
+  fill: #424242;
+}
+
 span.badge.for-cart {
   margin-left: -32px;
   margin-top: 0px;
-  background-color: darkorange;
+  background-color: #9DC462;
   font-size: 16px;
   font-weight: bolder;
+  .count {
+      text-shadow: 0px 1px 6px #999;
+  }
 }
 
 div#greeting {
-  /*line-height: 1;*/
   margin-top: 12px;
   margin-left: 29px;
   padding: 0 19px;
@@ -44,4 +57,18 @@ span.cart-display {
   right: 0;
   top: 4em;
   display: none;
+}
+
+
+a.shopping-cart {
+  position: relative;
+  z-index: 1;
+}
+
+.ordered-items {
+  margin-left: -12em;
+  width: 300px;
+  margin-top: 3em;
+  border: 1px solid red;
+  background-color: #FFF;
 }

@@ -1,10 +1,11 @@
-- @orders.each do |order|
-  %li
-    = order.order_items
-    %span.badge= order.quantity
-    \|
-    %span= number_to_currency order.total
-    \|
-    %span= link_to "+", order_add_item_path(order.id), method: :post
-    %span= link_to "x", order_subtract_item_path(order.id), method: :delete
-    %hr/
+%span.ordered-items
+  - @orders.each do |order|
+    %li
+      = order.order_items
+      %span.badge= order.quantity
+      \|
+      %span= number_to_currency order.total
+      \|
+      %span= link_to "+", order_add_item_path(order.id), method: :post
+      %span= link_to "x", order_subtract_item_path(order.id), method: :delete
+      %hr/
