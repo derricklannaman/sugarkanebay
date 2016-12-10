@@ -9,8 +9,8 @@ class OrderController < ApplicationController
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
       if current_user.orders.any?
-        order = current_user.orders.where(order_status: 'active').where(meal_id: params[:meal_id]).first
-        # If not order is found for that meal id
+        order = current_user.orders.where(order_status: 'pending-payment').where(meal_id: params[:meal_id]).first
+        # If no order is found for that meal id
         order = Order.create(user_id: current_user.id, meal_id: params[:meal_id].to_i,
                       cart_id: cart.id, order_items: params[:meal_name],
                       quantity: 0, total: meal.price) if order.blank?

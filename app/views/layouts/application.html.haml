@@ -14,4 +14,6 @@
     = render 'shared/top_level_navbar'
     %div{class: "#{controller_name}-#{action_name}"}
       = yield
-    = render 'shared/footer_navigation'
+    = render 'shared/footer_navigation' unless admin_page
+
+

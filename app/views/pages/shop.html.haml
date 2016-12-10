@@ -1,12 +1,17 @@
-%h1 Dinner Shop Page
+.container
+  %h1.col-sm-offset-4
+    Dinner Shop Page
+  %hr/
 
-%ul
-  - @meals.each do |meal|
-    %li
-      = link_to meal.name, meal_path(meal.id)
-      %span
-        = number_to_currency(meal.price)
-      %p
-        = meal.destination.name
+  .row
+    .col-sm-4
+      %ul
+        - @meals.each do |meal|
+          %li
+            = link_to meal.name, meal_path(meal.id)
+            %span
+              = number_to_currency(meal.price)
+            %p
+              = meal.destination.name
 
-= render partial: 'shared/go_to_cart' if current_user && current_user.cart
+      = render partial: 'shared/go_to_cart' if current_user && current_user.cart

@@ -23,8 +23,8 @@ class ChargesController < ApplicationController
     )
 
     current_user.cart.orders.each do |order|
-      if order.order_status == "active"
-        order.order_status = "inactive"
+      if order.order_status == "pending-payment"
+        order.order_status = "pending-shipping"
         order.save!
       end
     end

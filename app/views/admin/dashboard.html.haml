@@ -1,1 +1,45 @@
-%h1 Admin Dashboard
+.container
+  %h1 Admin Dashboard
+
+  .container
+    .container
+      .col-sm-4
+        .row.dashboard-info
+          %h5
+            Orders to fulfill today
+          %p
+            = @todays_orders
+          %h5
+
+            =# local_time(@order_time)
+
+        .row.dashboard-info
+          %h5
+            Total Overall Orders
+          %p
+            = @total_overall_orders
+
+      .col-sm-4
+        .row.dashboard-info
+          %h5
+            Total Active Orders
+          %p
+            = @total_number_active_orders
+
+        .row.dashboard-info
+          %h5
+            New Data Set Here
+          %p
+            ??
+      .col-sm-4
+        .row.dashboard-info
+          %h5
+            Orders Past 7 Days
+          %p
+            = @orders_past_7days
+
+        .row.dashboard-info
+          %h5
+            New Data Set Here
+          %p
+            ??
