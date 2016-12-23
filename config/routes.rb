@@ -18,12 +18,15 @@ Rails.application.routes.draw do
   get 'checkout', to: 'cart#checkout'
   get 'account', to: 'cart#account'
   get 'admin_dashboard', to: 'admin#dashboard'
+  get 'admin_dashboard/todays_orders', to: 'admin#todays_orders', as: 'daily_orders'
+  get 'admin_dashboard/todays_shipped_orders', to: 'admin#todays_shipped_orders', as: 'orders_shipped'
 
   resources :destinations, only: [:index]
   resources :meals, only: [:index, :show]
   resources :order do
     post 'add_item'
     delete 'subtract_item'
+    post 'shipped'
   end
   resources :charges
 end

@@ -3,3 +3,20 @@
     margin: 10px;
     padding: 15px;
 }
+
+.row.order-status-list {
+  border: 1px solid #999;
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
+i.fa.fa-check-square-o.shipped {
+  font-size: 3em;
+  color: green;
+}
+
+.order-list-view-wrapper {
+  border: 2px solid red;
+  height: 770px;
+  overflow-y: scroll;
+}

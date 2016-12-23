@@ -6,13 +6,15 @@
       .col-sm-4
         .row.dashboard-info
           %h5
-            Orders to fulfill today
+            Today's Orders
           %p
             = @todays_orders
+            = link_to 'Orders', daily_orders_path
+        .row.dashboard-info
           %h5
-
-            =# local_time(@order_time)
-
+            Today's Total Sales
+          %p
+            = number_to_currency(@todays_sales)
         .row.dashboard-info
           %h5
             Total Overall Orders
@@ -22,15 +24,15 @@
       .col-sm-4
         .row.dashboard-info
           %h5
-            Total Active Orders
+            Today's Shipped Orders
           %p
-            = @total_number_active_orders
-
+            = @shipped_orders
+            = link_to 'Shipped Orders', orders_shipped_path
         .row.dashboard-info
           %h5
             New Data Set Here
           %p
-            ??
+            ???
       .col-sm-4
         .row.dashboard-info
           %h5
@@ -40,6 +42,9 @@
 
         .row.dashboard-info
           %h5
-            New Data Set Here
+            Total Overall Orders
           %p
-            ??
+            = @total_overall_orders
+
+
+

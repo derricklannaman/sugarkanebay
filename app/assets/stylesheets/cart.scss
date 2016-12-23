@@ -4,6 +4,17 @@
   height: 100vh;
 }
 
+.cart-listing-wrapper {
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 200px;
+  width: 100%;
+  position: absolute;
+}
+
+.visible {
+  display: inline !important;
+}
+
 .account-order-date {
   background-color: #ccc;
   padding: 5px;

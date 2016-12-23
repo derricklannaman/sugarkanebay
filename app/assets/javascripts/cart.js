@@ -1,14 +1,13 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).on('turbolinks:load', function() {
-  // $('.ordered-items').hide();
-  // $('svg.checkout__icon').click(showCartContents);
+  $('.cart-listing-wrapper').hide();
+  $('li.cart-link').hover(toggleCartView);
 });
 
-function showCartContents() {
-  // console.log('ok')
-  // alert('hit')
-
-  // $('span.cart-display').show();
+function toggleCartView() {
+  $('.cart-listing-wrapper').toggleClass('visible');
 }
+
+
 

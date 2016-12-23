@@ -15,13 +15,13 @@
     / TODO: fix this ugly shit
     %h3
       Orders Pending Shipping
-    %p
-      A text confirmation will be sent when your order is shipped.
+    / %p
+    /   A text confirmation will be sent when your order is shipped.
     %hr/
     - if current_user.cart
       - @prev_orders.each do |order|
         .account-order-date
-          = order.first
+          = local_time(order.first)
         %ul.prev-order-list
           - order[1].each do |o|
             %li

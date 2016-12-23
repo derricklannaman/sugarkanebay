@@ -11,14 +11,19 @@ class OrderController < ApplicationController
       if current_user.orders.any?
         order = current_user.orders.where(order_status: 'pending-payment').where(meal_id: params[:meal_id]).first
         # If no order is found for that meal id
-        order = Order.create(user_id: current_user.id, meal_id: params[:meal_id].to_i,
-                      cart_id: cart.id, order_items: params[:meal_name],
-                      quantity: 0, total: meal.price) if order.blank?
+        order = Order.create( user_id: current_user.id,
+                              meal_id: params[:meal_id].to_i,
+                              cart_id: cart.id,
+                              order_items: params[:meal_name],
+                              quantity: 0,
+                              total: meal.price) if order.blank?
       else
         # If there are no current orders, create a new order
-        order = Order.create(user_id: current_user.id, meal_id: params[:meal_id].to_i,
-                      cart_id: cart.id, order_items: params[:meal_name],
-                      quantity: 0, total: meal.price)
+        order = Order.create( user_id: current_user.id,
+                              meal_id: params[:meal_id].to_i,
+                              cart_id: cart.id,
+                              order_items: params[:meal_name],
+                              quantity: 0, total: meal.price)
       end
       if params[:quantity].present?
         count = order.quantity += params[:quantity].to_i
@@ -56,6 +61,13 @@ class OrderController < ApplicationController
       order.save!
     end
     redirect_back fallback_location: cart_path(current_user.cart)
+  end
+
+  def shipped
+    order = Order.find(params[:order_id])
+    order.order_status = 'shipped'
+    order.save!
+    redirect_back fallback_location: daily_orders_path
   end
 
 end

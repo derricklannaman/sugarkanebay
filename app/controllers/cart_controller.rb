@@ -15,7 +15,7 @@ class CartController < ApplicationController
   def account
     if current_user.cart.present?
       @orders = current_user.cart.orders.where(order_status: "pending-payment").sort
-      previous_orders = current_user.cart.orders.where(order_status: "inactive").order(created_at: :desc)
+      previous_orders = current_user.cart.orders.where(order_status: "pending-shipping").order(created_at: :desc)
       @prev_orders = previous_orders.group_by { |order| order.created_at.to_date }.to_a
     end
   end

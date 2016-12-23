@@ -24,7 +24,7 @@
       %li
         = link_to "Shop", shop_path, class: 'text-uppercase'
       %li.cart-link
-        = render partial: "shared/cart_image" if user_signed_in? && current_user.cart.present?
+        = render partial: "shared/cart_image" if user_signed_in? && current_user.cart.present? #&& current_user.cart.quantity >= 1
       %li
         = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'text-uppercase access-type' if user_signed_in?
       %li
@@ -32,6 +32,7 @@
       %li
         =link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'text-uppercase access-type' if user_signed_in? == false
 
+.cart-listing-wrapper
 
 
 

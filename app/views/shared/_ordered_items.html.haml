@@ -1,5 +1,6 @@
 %span.ordered-items
   - @orders.each do |order|
+    -# binding.pry
     %li
       = order.order_items
       %span.badge= order.quantity

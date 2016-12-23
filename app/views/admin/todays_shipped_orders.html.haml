@@ -1,0 +1,25 @@
+.container
+  %h1.text-center= "Orders Shipped (#{ @shipped_orders.size})"
+
+.order-list-view-wrapper
+  .container
+    - @shipped_orders.each do |order|
+      .row.order-status-list
+        .container
+          %p Shipping Details
+          = order.user.firstname
+          = order.user.lastname
+
+          %p= order.user.address1
+          = order.user.address2
+          = order.user.city
+          = order.user.state
+          = order.user.zip
+        .container
+          = order.order_items
+          = order.order_status
+          = order.quantity
+        - if order.order_status == 'pending-shipping'
+          = button_to "Shipped", order_shipped_path(order.id), class: 'btn btn-success pull-right'
+        - else
+          %i.fa.fa-check-square-o.shipped.pull-right{"aria-hidden" => "true"}
