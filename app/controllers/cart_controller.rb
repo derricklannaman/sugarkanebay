@@ -20,6 +20,15 @@ class CartController < ApplicationController
     end
   end
 
+  def load_cart
+    orders = current_user.cart.orders.where(order_status: "pending-payment").sort
+    order_data = []
+    orders.each do |order|
+      order_data << { name: order.order_items, quantity: order.quantity }
+    end
+    render json: order_data
+  end
+
   def cart_total
     unless current_user.cart.blank?
       cart_total = current_user.cart.orders.where(order_status: "pending-payment").pluck(:total).sum

@@ -11,6 +11,15 @@
   position: absolute;
 }
 
+.cart-item-view {
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  background-color: #FFF;
+  margin: 5px;
+  float: left;
+}
+
 .visible {
   display: inline !important;
 }
