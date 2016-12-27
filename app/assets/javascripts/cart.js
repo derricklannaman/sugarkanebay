@@ -6,8 +6,11 @@ $(document).on('turbolinks:load', function() {
 });
 
 function toggleCartView() {
-  loadCartItems();
-  $('.cart-listing-wrapper').toggleClass('visible');
+  var badgeCount = $('.badge > .count')[0].innerText
+  if(badgeCount != '0') {
+    loadCartItems();
+    $('.cart-listing-wrapper').toggleClass('visible');
+  }
 }
 
 function loadCartItems() {
@@ -16,20 +19,31 @@ function loadCartItems() {
     return
   }
   else {
-    var link = $('li.cart-link > a');
-    var link_parts = link[0].href.split('/')
-    var cart_id = link_parts[link_parts.length -1]
+    var link = $('li.cart-link > a'),
+        link_parts = link[0].href.split('/'),
+        cart_id = link_parts[link_parts.length -1];
+
     $.ajax({
       url: "load_cart/" + cart_id,
       data: cart_id,
       success: function(data) {
         for(var i = 0; i < data.length; i++) {
-          var item = "<div class='cart-item-view'>"+data[i].name+"</div>"
-          cartContainer.prepend(item)
+          buildCartListItem(data, cartContainer, i);
         }
       }
     });
   }
 } // End loadCartItems
 
+function buildCartListItem(data, cartContainer, i) {
+  var item = "<div class='flex-item cart-item-view'>"
+  item += "<div class='cart-item-title'>"
+  item += data[i].name
+  item += "<div class='badge for-cart pull-right'>"
+  item += data[i].quantity
+  item += "</div>"
+  item += "</div>"
+  item += "</div>"
+  cartContainer.prepend(item)
+}
 
