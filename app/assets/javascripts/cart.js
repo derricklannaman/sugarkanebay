@@ -37,13 +37,16 @@ function loadCartItems() {
 
 function buildCartListItem(data, cartContainer, i) {
   var item = "<div class='flex-item cart-item-view'>"
-  item += "<div class='cart-item-title'>"
-  item += data[i].name
-  item += "<div class='badge for-cart pull-right'>"
-  item += data[i].quantity
-  item += "</div>"
-  item += "</div>"
-  item += "</div>"
+        item += "<div class='cart-item-title'>"
+          item += data[i].name
+          item += "<div class='badge for-cart pull-right'>"
+            item += data[i].quantity
+          item += "</div>"
+        item += "</div>"
+        item +="<div class='cart-item-image'>"
+          item+= "<img alt='Dinner' class='img-fit' src='/assets/"+data[i].image+"' width='200' height='150'/>"
+        item += "</div>"
+      item += "</div>"
   cartContainer.prepend(item)
 }
 

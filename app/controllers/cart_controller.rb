@@ -24,7 +24,7 @@ class CartController < ApplicationController
     orders = current_user.cart.orders.where(order_status: "pending-payment").sort
     order_data = []
     orders.each do |order|
-      order_data << { name: order.order_items, quantity: order.quantity }
+      order_data << { name: order.order_items, quantity: order.quantity, image: Meal.find(order.meal_id).thumbnail_image }
     end
     render json: order_data
   end

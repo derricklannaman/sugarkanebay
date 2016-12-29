@@ -89,10 +89,14 @@ a.access-type {
   padding-right: 65px;
 }
 
-
-
 .mega-footer {
   padding: 16px 40px;
   color: #9e9e9e;
   background-color: #424242;
+}
+
+/* Images */
+
+img.img-fit {
+  object-fit: cover;
 }

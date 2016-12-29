@@ -7,7 +7,8 @@ class PagesController < ApplicationController
 
   def shop
     destinations = Destination.all
-    @meals = destinations.map {|destination| destination.meals}.flatten
+    meals = destinations.map {|destination| destination.meals}.flatten
+    @meal_group_left, @meal_group_right = meals.each_slice( (meals.size/2.0).round ).to_a
   end
 
   def how_it_works
