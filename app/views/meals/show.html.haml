@@ -1,21 +1,19 @@
-.container
-  %h1 Meals details page
-  %p where a user can click a order button
-  .row
-    .col-sm-4
-      %hr/
-      %div
-        = @meal.name
-        = form_tag "/order" do
-          = hidden_field_tag  :redirect_to, request.path
-          = hidden_field_tag 'meal_id', @meal.id
-          = hidden_field_tag 'meal_name', @meal.name
-          = number_field_tag 'quantity', 1, min: 1, max: 10
-          = submit_tag "Order"
 
-    .col-sm-4
-      %hr/
+%div{class: 'container meal-marquee', :style => "background-image: url(#{image_path(@meal.standard_image, class: 'img-responsive')});"}
+  .container
+    .row
+      .col-sm-4
+        %div.red
+          = @meal.name
+          = form_tag "/order" do
+            = hidden_field_tag  :redirect_to, request.path
+            = hidden_field_tag 'meal_id', @meal.id
+            = hidden_field_tag 'meal_name', @meal.name
+            = number_field_tag 'quantity', 1, min: 1, max: 10
+            = submit_tag "Order"
 
-      %h5="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
+      .col-sm-4
 
-      = render partial: 'shared/go_to_cart'
+        %h5="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
+
+        = render partial: 'shared/go_to_cart'

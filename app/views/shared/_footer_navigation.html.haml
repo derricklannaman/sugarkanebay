@@ -1,24 +1,25 @@
-%footer.mega-footer
-  =# render partial: 'shared/logo'
-  .mega-footer--top-section
-    .mega-footer--left-section
-      %button.mega-footer--social-btn
-       
-      %button.mega-footer--social-btn
-       
-      %button.mega-footer--social-btn
-    .mega-footer--right-section
+- unless controller_name == 'meals' && action_name == 'show'
+  %footer.mega-footer
+    =# render partial: 'shared/logo'
+    .mega-footer--top-section
+      .mega-footer--left-section
+        %button.mega-footer--social-btn
+         
+        %button.mega-footer--social-btn
+         
+        %button.mega-footer--social-btn
+      .mega-footer--right-section
 
 
-  .mega-footer--middle-section
-    =link_to "Shop", shop_path, class: 'mdl-typography--font-light mdl-navigation__link mdl-typography--text-uppercase footer-section'
-    \ -
-    =link_to "Destinations", destinations_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
-    \ -
-    =link_to "How it works", how_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
-    \ -
-    =link_to "About", about_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
-    .separator
-    %p.typography--font-light= "SugarKaneKitchen © #{Time.new.year} All Rights Reserved"
-  .mega-footer--bottom-section
+    .mega-footer--middle-section
+      =link_to "Shop", shop_path, class: 'mdl-typography--font-light mdl-navigation__link mdl-typography--text-uppercase footer-section'
+      \ -
+      =link_to "Destinations", destinations_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
+      \ -
+      =link_to "How it works", how_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
+      \ -
+      =link_to "About", about_path, class: 'mdl-navigation__link mdl-typography--text-uppercase footer-section'
+      .separator
+      %p.typography--font-light= "SugarKaneKitchen © #{Time.new.year} All Rights Reserved"
+    .mega-footer--bottom-section
 

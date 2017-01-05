@@ -1,12 +1,15 @@
-%span.ordered-items
+.container
   - @orders.each do |order|
-    -# binding.pry
-    %li
-      = order.order_items
-      %span.badge= order.quantity
-      \|
-      %span= number_to_currency order.total
-      \|
-      %span= link_to "+", order_add_item_path(order.id), method: :post
-      %span= link_to "x", order_subtract_item_path(order.id), method: :delete
+    .row
+      .ordered-item-wrapper
+        .item-image-wrapper.col-md-3
+          = image_tag(order[-1], class: "order-item-image img-fit")
+        .col-md-3
+          = order.first.order_items
+          %span.badge= order.first.quantity
+        .col-md-3
+          %span= number_to_currency order.first.total
+        .col-md-3
+          %span= link_to "+", order_add_item_path(order.first.id), method: :post
+          %span= link_to "x", order_subtract_item_path(order.first.id), method: :delete
       %hr/

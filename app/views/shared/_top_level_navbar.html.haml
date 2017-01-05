@@ -24,13 +24,13 @@
       %li
         = link_to "Shop", shop_path, class: 'text-uppercase'
       %li.cart-link
-        = render partial: "shared/cart_image" if user_signed_in? && current_user.cart.present? #&& current_user.cart.quantity >= 1
+        = render partial: "shared/cart_image" if user_signed_in? && current_user.cart.present?
       %li
         = link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'text-uppercase access-type' if user_signed_in?
+      / %li
+      / =#link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'text-uppercase access-type' if user_signed_in? == false
       %li
-        =link_to "Sign Up", new_user_registration_path(redirect_to: request.path), class: 'text-uppercase access-type' if user_signed_in? == false
-      %li
-        =link_to "Log In", new_user_session_path(redirect_to: request.path), class: 'text-uppercase access-type' if user_signed_in? == false
+        =link_to "Sign In", new_user_session_path(redirect_to: request.path), class: 'text-uppercase access-type cta-button' if user_signed_in? == false
 
 .flex-container.cart-listing-wrapper
 

@@ -3,7 +3,19 @@ class CartController < ApplicationController
   before_action :check_cart_exist, only: :show
 
   def show
-    @orders = current_user.cart.orders.where(order_status: "pending-payment").sort if current_user.cart.present?
+    orders = current_user.cart.orders.where(order_status: "pending-payment").sort if current_user.cart.present?
+    # @orders, @orders1 = orders.each_slice( (orders.size/2.0).round ).to_a
+
+    order_images = []
+    orders.each do |order|
+      order_images << Meal.find(order.meal_id).thumbnail_image
+    end
+
+    # @orders, @orders1 = orders.each_slice( (orders.size/2.0).round ).to_a
+    # order_with_images = orders.zip(order_images)
+    @orders = orders.zip(order_images)
+    # @orders, @orders1 = order_with_images.each_slice( (orders.size/2.0).round ).to_a
+
     cart_total
   end
 

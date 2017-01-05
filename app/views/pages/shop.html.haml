@@ -1,7 +1,7 @@
 .container
-  %h1.col-sm-offset-4
+  %h1.text-center
     Dinner Shop Page
-  %hr/
+    %hr/
 
   .container
     .row
@@ -12,23 +12,25 @@
             .meal-panel
               = image_tag(meal.thumbnail_image, class: "meal-panel-image img-fit")
               .dinner-info.text-center
-                .meal-name= meal.name
-                %span
-                  = number_to_currency(meal.price)
-                %p
+                .meal-name
+                  = meal.name
+                  %span
+                    = number_to_currency(meal.price)
+                %p.from
                   From:
                   = meal.destination.name
 
-      .col-sm-.col-md-6
+      .col-md-6
         - @meal_group_right.each do |meal|
           = link_to meal_path(meal.id) do
             .meal-panel
               = image_tag(meal.thumbnail_image, class: "meal-panel-image img-fit")
               .dinner-info.text-center
-                .meal-name= meal.name
-                %span
-                  = number_to_currency(meal.price)
-                %p
+                .meal-name
+                  = meal.name
+                  %span
+                    = number_to_currency(meal.price)
+                %p.from
                   From:
                   = meal.destination.name
 
