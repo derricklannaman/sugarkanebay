@@ -12,7 +12,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   right: 1em;
-  /*border: 15px solid rgba(0, 0, 0, 0.15);*/
   border: 15px solid rgba(255, 206, 0, 1);
   z-index: 3;
 }
@@ -110,4 +109,19 @@ a.shopping-cart {
   margin-top: 3em;
   border: 1px solid red;
   background-color: #FFF;
+}
+
+.ordered-item-wrapper {
+  border: 1px solid #999;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+img.order-item-image.img-fit {
+  width: 10em;
+}
+
+.item-image-wrapper.col-md-3 {
+  padding-left: 0px;
 }
