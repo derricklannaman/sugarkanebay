@@ -1,29 +1,93 @@
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
-    <h1 class="text-center">Log in</h1>
-    <hr>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
-      </div>
+<div class="form">
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
 
-      <div class="form-group">
-        <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
-      </div>
+      <div class="tab-content">
 
-      <% if devise_mapping.rememberable? -%>
-        <div class="form-group">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+        <!-- SIGN UP -->
+        <div id="signup">
+          <h1>Yay! Lets Do This</h1>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="field-wrap">
+              <label>
+                First Name<span class="req">*</span>
+              </label>
+              <%= f.text_field :firstname, autofocus: true %>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Email<span class="req">*</span>
+              </label>
+              <%= f.email_field :email, autofocus: false %>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Password<span class="req">*</span>
+              </label>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Password Confirmation<span class="req">*</span>
+              </label>
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+            <div class="field-wrap">
+                <%= hidden_field_tag :redirect_to, request.path %>
+                <%= f.submit "Sign Up", class: "button button-block" %>
+            </div>
+          <% end %>
         </div>
-      <% end -%>
-      <div class="form-group">
-          <%= hidden_field_tag :redirect_to, request.path %>
-          <%= f.submit "Log in", class: "btn btn-primary btn-block btn-lg" %>
-      </div>
-    <% end %>
-      <div class="text-center">
-        <%= render "devise/shared/links" %>
-      </div>
-    </div>
-</div>
+
+          <div class="text-center">
+            <%= render "devise/shared/links" %>
+          </div>
+        <!-- SIGN IN -->
+        <div id="login">
+          <h1>Welcome Back!</h1>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <div class="field-wrap">
+              <label>
+                Email Address<span class="req">*</span>
+              </label>
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Password<span class="req">*</span>
+              </label>
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field-wrap">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+            <div class="field-wrap">
+                <%= hidden_field_tag :redirect_to, request.path %>
+                <%= f.submit "Log in", class: "button button-block" %>
+            </div>
+          <% end %>
+
+          <div class="text-center">
+            <%= render "devise/shared/links" %>
+          </div>
+
+        </div>
+      </div><!-- tab-content -->
+</div> <!-- /form -->
