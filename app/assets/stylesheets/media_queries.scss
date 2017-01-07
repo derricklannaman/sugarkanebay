@@ -1,0 +1,41 @@
+/*MEDIA QUERIES*/
+
+@media(max-width: 575px) and (min-width: 400px) {
+  input.order-bar-counter {
+    /*background-color: orange; For testing media queries by color change*/
+    font-size: 4em;
+    margin-top: -3em;
+  }
+  .text-center.name {
+    margin-top: 1em;
+  }
+}
+
+@media(min-width:576px) and (max-width: 767px) {
+  input.order-bar-counter {
+    /*background-color: red; For testing media queries by color change*/
+    font-size: 4em;
+    margin-top: -3em;
+  }
+  .text-center.name {
+    margin-top: 1em;
+  }
+}
+
+@media(min-width:768px) and (max-width: 991px){
+  input.order-bar-counter {
+    /*background-color: green; For testing media queries by color change*/
+  }
+}
+
+@media(min-width:992px) and (max-width: 1199px){
+  input.order-bar-counter {
+    /*background-color: blue; For testing media queries by color change*/
+  }
+}
+
+@media(min-width:1200px){
+  input.order-bar-counter {
+    /*background-color: purple; For testing media queries by color change*/
+  }
+}
