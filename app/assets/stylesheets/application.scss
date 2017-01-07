@@ -27,6 +27,7 @@ a.text-uppercase.access-type.cta-button {
     text-decoration: none;
     margin-left: 1px;
     background: #1ab188;
+    background: rgba(255, 206, 0, 1);
     color: #FFF !important;
     font-size: 14px;
     float: left;
@@ -40,17 +41,7 @@ a.text-uppercase.access-type.cta-button {
   margin: 5px 0;
 }
 
-@media (max-width: 839px) and (min-width: 480px) {
-  .mdl-cell--3-col, .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
-  width: calc(32.5% - 16px);
-  }
-}
 
-@media (max-width: 479px) {
-  .mdl-cell--3-col, .mdl-cell--3-col-phone.mdl-cell--3-col-phone {
-    width: calc(100% - 16px);
-  }
-}
 
 @import "bootstrap";
 @import "bootstrap-sprockets";
@@ -170,7 +161,7 @@ label {
   left:13px;
   color:rgba($white,.5);
   transition:all 0.25s ease;
-  -webkit-backface-visibility: hidden;
+  /*-webkit-backface-visibility: hidden;*/
   pointer-events: none;
   font-size:22px;
   .req {
@@ -238,7 +229,7 @@ textarea {
 }
 
 .button {
-  border:0;
+  border:2px solid green;
   outline:none;
   border-radius:0;
   padding:15px 0;
@@ -265,8 +256,11 @@ textarea {
   text-align:right;
 }
 
-
-
+/*input[type=number]::-webkit-inner-spin-button,*/
+input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      /*margin: 0;*/
+}
 
 
 

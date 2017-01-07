@@ -1,19 +1,25 @@
 
 %div{class: 'container meal-marquee', :style => "background-image: url(#{image_path(@meal.standard_image, class: 'img-responsive')});"}
+
+  .order-bar
+
+    %h5="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
+
+
+
+    = render partial: 'shared/go_to_cart'
+
+.order-bar-footer
   .container
     .row
-      .col-sm-4
-        %div.red
-          = @meal.name
-          = form_tag "/order" do
-            = hidden_field_tag  :redirect_to, request.path
-            = hidden_field_tag 'meal_id', @meal.id
-            = hidden_field_tag 'meal_name', @meal.name
-            = number_field_tag 'quantity', 1, min: 1, max: 10
-            = submit_tag "Order"
-
-      .col-sm-4
-
-        %h5="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
-
-        = render partial: 'shared/go_to_cart'
+      = form_tag "/order" do
+        = hidden_field_tag  :redirect_to, request.path
+        = hidden_field_tag 'meal_id', @meal.id
+        = hidden_field_tag 'meal_name', @meal.name
+        .col-md-4.col-sm-4.col-xs-12
+          .text-center.name= @meal.name
+        .col-md-4.col-sm-4.col-xs-12
+          / TODO: Add plus/minus icons for meal order count
+          = number_field_tag 'quantity', 1, min: 1, max: 10, class: 'order-bar-counter'
+        .col-md-4.col-sm-4.col-xs-12
+          = submit_tag "Order", class: 'order-bar-button'
