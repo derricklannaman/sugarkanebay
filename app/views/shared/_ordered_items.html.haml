@@ -2,14 +2,18 @@
   - @orders.each do |order|
     .row
       .ordered-item-wrapper
-        .item-image-wrapper.col-md-3
-          = image_tag(order[-1], class: "order-item-image img-fit")
-        .col-md-3
-          = order.first.order_items
-          %span.badge= order.first.quantity
-        .col-md-3
-          %span= number_to_currency order.first.total
-        .col-md-3
-          %span= link_to "+", order_add_item_path(order.first.id), method: :post
-          %span= link_to "x", order_subtract_item_path(order.first.id), method: :delete
+        .col-md-3.col-sm-3.col-xs-3.item-image-wrapper
+          = image_tag(order[-1], size: "150x150", class: "ordered-item-image img-fit")
+        .col-md-3.col-sm-3.col-xs-3.rm-padding
+          .ordered-item
+            = order.first.order_items
+            .ordered-item-count
+              = order.first.quantity
+        .col-md-3.col-sm-3.col-xs-3.rm-padding
+          .order-item-total
+            = number_to_currency order.first.total
+        .col-md-3.col-sm-3.col-xs-3.rm-padding
+          .quantity-controls
+            %span= link_to "+", order_add_item_path(order.first.id), method: :post
+            %span= link_to "x", order_subtract_item_path(order.first.id), method: :delete
       %hr/

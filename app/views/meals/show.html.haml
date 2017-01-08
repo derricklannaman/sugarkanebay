@@ -1,13 +1,12 @@
 
 %div{class: 'container meal-marquee', :style => "background-image: url(#{image_path(@meal.standard_image, class: 'img-responsive')});"}
+  - if @meal_count > 0
+    .order-status-bar
+      .status
+        ="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
 
-  .order-bar
-
-    %h5="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
-
-
-
-    = render partial: 'shared/go_to_cart'
+      =# render partial: 'shared/go_to_cart'
+  .text-center.name= @meal.name
 
 .order-bar-footer
   .container
@@ -17,7 +16,8 @@
         = hidden_field_tag 'meal_id', @meal.id
         = hidden_field_tag 'meal_name', @meal.name
         .col-md-4.col-sm-4.col-xs-12
-          .text-center.name= @meal.name
+          .learn-more-link-container
+            = link_to "Learn More", '#', class: 'order-bar-learn-more'
         .col-md-4.col-sm-4.col-xs-12
           / TODO: Add plus/minus icons for meal order count
           = number_field_tag 'quantity', 1, min: 1, max: 10, class: 'order-bar-counter'
