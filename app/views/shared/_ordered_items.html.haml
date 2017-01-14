@@ -14,6 +14,11 @@
             = number_to_currency order.first.total
         .col-md-3.col-sm-3.col-xs-3.rm-padding
           .quantity-controls
-            %span= link_to "+", order_add_item_path(order.first.id), method: :post
-            %span= link_to "x", order_subtract_item_path(order.first.id), method: :delete
+            = link_to order_add_item_path(order.first.id), method: :post do
+              %i.fa.fa-chevron-circle-up.fa-3{"aria-hidden" => "true"}
+
+            = link_to order_subtract_item_path(order.first.id), method: :delete do
+              %i.fa.fa-chevron-circle-down.fa-3{"aria-hidden" => "true"}
       %hr/
+
+
