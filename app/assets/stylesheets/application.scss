@@ -75,6 +75,9 @@ a.text-uppercase.access-type.cta-button {
   border-radius: 0px;
 }
 
+$sugarkane-gold: #ffce00;
+$sugarkane-gold-light: lighten($sugarkane-gold, 10%);
+
 $body-bg: #c1bdba;
 $form-bg: #13232f;
 $white: #ffffff;
@@ -144,12 +147,12 @@ a {
     cursor:pointer;
     transition:.5s ease;
     &:hover {
-      background:$main-dark;
+      background:$sugarkane-gold;
       color:$white;
     }
   }
   .active a {
-    background:$main;
+    background:$sugarkane-gold;
     color:$white;
   }
 }
@@ -177,7 +180,7 @@ label {
   font-size:22px;
   .req {
     margin:2px;
-    color:$main;
+    color:$sugarkane-gold;
   }
 }
 
@@ -208,7 +211,7 @@ input, textarea {
   transition:border-color .25s ease, box-shadow .25s ease;
   &:focus {
     outline:0;
-    border-color:$main;
+    border-color:$sugarkane-gold-light;
   }
 }
 
@@ -240,7 +243,7 @@ textarea {
 }
 
 .button {
-  border:2px solid green;
+  border:2px solid $sugarkane-gold-light;
   outline:none;
   border-radius:0;
   padding:15px 0;
@@ -248,12 +251,12 @@ textarea {
   font-weight:$bold;
   text-transform:uppercase;
   letter-spacing:.1em;
-  background:$main;
+  background:$sugarkane-gold;
   color:$white;
   transition:all.5s ease;
   -webkit-appearance: none;
   &:hover, &:focus {
-    background:$main-dark;
+    background:$sugarkane-gold;
   }
 }
 

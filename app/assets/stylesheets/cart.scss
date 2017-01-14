@@ -139,6 +139,15 @@ a.shopping-cart {
   /*background-color: blue;*/
 }
 
+i.fa.fa-chevron-circle-down.fa-3,
+i.fa.fa-chevron-circle-up.fa-3 {
+  background: rgba(255,255,255, 0.4);
+  color: blue;
+  padding: 20px;
+  font-size: 2em;
+  border: 5px solid rgba(255,255,255, 0.4);;
+}
+
 .item-image-wrapper.col-md-3,
 .col-md-3.col-sm-3.col-xs-3.rm-padding {
   padding-left: 0px;
