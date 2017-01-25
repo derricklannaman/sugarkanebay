@@ -1,3 +1,5 @@
+
+
 .content-wrapper {
   max-width: 1400px;
   margin: auto;
@@ -68,13 +70,25 @@ a.mdl-navigation__link.mdl-typography--text-uppercase.footer-section {
 span.sugarkane {
   font-family: 'Montserrat Subrayada', sans-serif;
   font-size: 2em;
+  &:hover {
+    cursor: pointer;
+  }
 }
+
+
+/*    &:hover {
+      background:$sugarkane-gold;
+      color:$white;
+    }*/
 
 span.kitchen {
   font-family: 'Cinzel Decorative', cursive;
   font-size: 1.3em;
   letter-spacing: 0.6em;
   margin-left: 0.5em;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 #navigation-logo {

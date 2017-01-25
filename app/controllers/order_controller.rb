@@ -1,10 +1,12 @@
 class OrderController < ApplicationController
+  before_action :return_to_order_url, only: :create
   before_action :authenticate_user!, only: :create
 
   def new
   end
 
   def create
+    # binding.pry
     if current_user.cart.present?
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
@@ -36,7 +38,7 @@ class OrderController < ApplicationController
       redirect_to shop_path
     else
       flash[:notice] = "Please sign up or sign in first."
-      redirect_to new_user_registration_path
+      redirect_to new_user_registration_path(redirect_to: request.path)
     end
   end
 
@@ -68,6 +70,16 @@ class OrderController < ApplicationController
     order.order_status = 'shipped'
     order.save!
     redirect_back fallback_location: daily_orders_path
+  end
+
+  def return_to_order_url
+    return if current_user.present? && cookies[:entry_point_url].blank?
+    if current_user.present?
+      cookies.delete :entry_point_url
+    else
+      cookies[:entry_point_url] = ''
+      cookies[:entry_point_url] = request.referer
+    end
   end
 
 end

@@ -2,7 +2,7 @@
 
 .meal-panel {
   margin: 2em 0em;
-  border: 15px solid rgba(0, 0, 0, 0.15);
+  /*border: 15px solid rgba(0, 0, 0, 0.15);*/
 }
 
 img.meal-panel-image {
@@ -98,12 +98,13 @@ input.order-bar-button {
 }
 
 .learn-about-meal {
-  border: 1px solid red;
   width: 50%;
   position: relative;
-  height: 35em;
-  float: right;
+  height: 92%;
+  background-color: rgba(0, 0, 0, 0.3);
   overflow-y: scroll;
+  color: #FFF;
+  left: 103%;
 }
 
 

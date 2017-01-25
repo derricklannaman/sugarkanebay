@@ -44,7 +44,7 @@
             </div>
 
             <div class="field-wrap">
-                <%= hidden_field_tag :redirect_to, request.path %>
+                <%= hidden_field_tag :redirect_to, cookies[:entry_point_url] %>
                 <%= f.submit "Sign Up", class: "button button-block" %>
             </div>
           <% end %>

@@ -105,6 +105,35 @@ html {
 body {
   background:$body-bg;
   font-family: 'Titillium Web', sans-serif;
+  .mega-footer {
+    position: relative;
+  }
+}
+
+#main-content-container {
+  height: calc(100vh);
+}
+/*
+#main-content-container:after {
+  content: "";
+  display: block;
+}*/
+
+.close-x {
+  width: 50px;
+  height: 50px;
+  float: right;
+  border-radius: 59%;
+  text-align: center;
+  padding: 1%;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 1%;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 a {
