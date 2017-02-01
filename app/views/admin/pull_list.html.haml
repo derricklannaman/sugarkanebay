@@ -1,0 +1,14 @@
+%h1 Master Pull List
+.container
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th #
+        %th Product
+        %th Quantity
+    %tbody
+      - @counts.each_with_index do |(k, v), i|
+        %tr
+          %th{:scope => "row"}="#{i + 1}"
+          %td.mark.lead= "#{k}"
+          %td.mark.lead= "#{v}"

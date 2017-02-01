@@ -6,7 +6,8 @@
         ="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
   .learn-about-meal
     .close-x X
-    %h3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt error atque labore veritatis sapiente. Voluptatem error delectus quisquam sequi! Nostrum aliquam modi repudiandae quidem minus ea optio incidunt error reprehenderit! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt error atque labore veritatis sapiente. Voluptatem error delectus quisquam sequi! Nostrum aliquam modi repudiandae quidem minus ea optio incidunt error reprehenderit!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt error atque labore veritatis sapiente. Voluptatem error delectus error reprehenderit!
+    %h2= @meal.name
+    %h3= @meal.description_details
     =# render partial: 'shared/go_to_cart'
   .text-center.name= @meal.name
 

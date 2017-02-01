@@ -6,7 +6,6 @@ class OrderController < ApplicationController
   end
 
   def create
-    # binding.pry
     if current_user.cart.present?
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
@@ -74,12 +73,24 @@ class OrderController < ApplicationController
 
   def return_to_order_url
     return if current_user.present? && cookies[:entry_point_url].blank?
+    # if current_user.blank? && cookies[:entry_point_url].present?
+    #   initial_cart_with_first_order_after_sign_in
+    # end
     if current_user.present?
       cookies.delete :entry_point_url
     else
       cookies[:entry_point_url] = ''
       cookies[:entry_point_url] = request.referer
     end
+  end
+
+  def initial_cart_with_first_order_after_sign_in
+    meal = Meal.find(params[:meal_id])
+    Order.create( user_id: current_user.id,
+                  meal_id: params[:id].to_i,
+                  cart_id: current_user.cart.id,
+                  order_items: meal.name,
+                  quantity: 1, total: meal.price )
   end
 
 end

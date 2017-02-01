@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 
   get 'checkout', to: 'cart#checkout'
   get 'account', to: 'cart#account'
-  get 'admin_dashboard', to: 'admin#dashboard'
-  get 'admin_dashboard/todays_orders', to: 'admin#todays_orders', as: 'daily_orders'
-  get 'admin_dashboard/todays_shipped_orders', to: 'admin#todays_shipped_orders', as: 'orders_shipped'
+  get 'admin', to: 'admin#dashboard'
+  get 'admin/pull_list', to: 'admin#pull_list'
+  get 'admin/todays_orders', to: 'admin#todays_orders', as: 'daily_orders'
+  get 'admin/todays_shipped_orders', to: 'admin#todays_shipped_orders', as: 'orders_shipped'
 
 
   # resources :destinations, only: [:index]

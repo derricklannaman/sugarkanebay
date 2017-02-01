@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  manageNavigationColors();
+  // manageNavigationColors();
 
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
@@ -49,28 +49,29 @@ $('.tab a').on('click', function (e) {
 
 });
 
-function setNavTextWhite() {
-  var nav = $('#navigation-logo');
-  if ( nav.hasClass('dark-nav-text') ) {
-    nav.removeClass('dark-nav-text');
-  }
-}
+// TODO: remove if stale
+// function setNavTextWhite() {
+//   var nav = $('#navigation-logo');
+//   if ( nav.hasClass('dark-nav-text') ) {
+//     nav.removeClass('dark-nav-text');
+//   }
+// }
 
-function setNavTextDark() {
-  $('#navigation-logo').addClass('dark-nav-text');
-  $('.navbar-default .navbar-nav > li > a').addClass('dark-nav-text');
-  $('.checkout__icon').addClass('fill-dark');
-}
+// function setNavTextDark() {
+//   $('#navigation-logo').addClass('dark-nav-text');
+//   $('.navbar-default .navbar-nav > li > a').addClass('dark-nav-text');
+//   $('.checkout__icon').addClass('fill-dark');
+// }
 
 
-function manageNavigationColors() {
-  if (document.location.pathname == '/') {
-    setNavTextWhite();
-  }
-  else {
-    setNavTextDark();
-  }
-}
+// function manageNavigationColors() {
+//   if (document.location.pathname == '/') {
+//     setNavTextWhite();
+//   }
+//   else {
+//     setNavTextDark();
+//   }
+// }
 
 
 

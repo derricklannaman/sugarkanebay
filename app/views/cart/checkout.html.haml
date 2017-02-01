@@ -24,37 +24,11 @@
         = f.email_field :email, class: 'form-control'
 
       .form-group
-        = f.label :address1, "Address"
-        %br/
-        = f.text_field :address1, class: 'form-control'
-      .form-group
-        = f.label :address2, "Apt/Suite"
-        %br/
-        = f.text_field :address2, class: 'form-control'
-      .form-group
-        = f.label :city
-        %br/
-        = f.text_field :city, class: 'form-control'
-      .form-group
-        = f.label :state
-        %br/
-        = f.text_field :state, class: 'form-control'
-      .form-group
-        = f.label :country
-        %br/
-        = f.text_field :country, class: 'form-control', disabled: true
-      .form-group
-        = f.label :zip
-        %br/
-        = f.text_field :zip, class: 'form-control'
-      .form-group
-        = f.label :phone, "Phone"
-        %br/
-        = f.telephone_field :phone, class: 'form-control'
-
-      .form-group
         = hidden_field :amount, @cart_total
-        %script.stripe-button{"data-amount" => "#{@cart_total*100}", "data-description" => "Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+        - if current_user.address1.blank? && current_user.city.blank? && current_user.state.blank?
+          %script.stripe-button{"data-amount" => "#{@cart_total*100}", "data-description" => "Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", "data-shippingAddress" =>'true', "data-email"=> "#{current_user.email}", :src => "https://checkout.stripe.com/checkout.js"}
+        - else
+          %script.stripe-button{"data-amount" => "#{@cart_total*100}", "data-description" => "Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", "data-email"=> "#{current_user.email}", :src => "https://checkout.stripe.com/checkout.js"}
 
     %hr/
   .col-sm-4
@@ -64,7 +38,7 @@
 
     %ul
     - if current_user.cart
-      = render partial: 'shared/ordered_items', locals: {orders: @orders}
+      =# render partial: 'shared/ordered_items', locals: {orders: @orders}
 
   .col-sm-4
     %h3

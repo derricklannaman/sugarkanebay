@@ -1,25 +1,46 @@
 .container
   %h1.text-center= "Todays Orders (#{@orders.size})"
 
-.order-list-view-wrapper
-  .container
-    - @orders.each do |order|
-      .row.order-status-list
-        .container
-          %p Shipping Details
-          = order.user.firstname
-          = order.user.lastname
+.container
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th #
+        %th Cust Id
+        %th Order #
+        %th First Name
+        %th Last Name
+        %th Address1
+        %th Address2
+        %th City
+        %th State
+        %th Zip
+        %th Order
+        %th Quantity
+        %th Fulfillment Status
+        %th Action
+    %tbody
+      - @orders_per_cart.each do |cart_order|
+        - cart_order.last.each_with_index do |order, i|
+          %tr
+            %th{:scope => "row"}="#{i + 1}"
+            %td= order.user.id
+            %td= 12345
+            %td= order.user.firstname
+            %td= order.user.lastname
+            %td= order.user.address1
+            %td= order.user.address2
+            %td= order.user.city
+            %td= order.user.state
+            %td= order.user.zip
+            %td= order.order_items
+            %td= order.quantity
+            %td= order.order_status
 
-          %p= order.user.address1
-          = order.user.address2
-          = order.user.city
-          = order.user.state
-          = order.user.zip
-        .container
-          = order.order_items
-          = order.order_status
-          = order.quantity
-        - if order.order_status == 'pending-shipping'
-          = button_to "Shipped", order_shipped_path(order.id), class: 'btn btn-success pull-right'
-        - else
-          %i.fa.fa-check-square-o.shipped.pull-right{"aria-hidden" => "true"}
+            - if order.order_status == 'pending-shipping'
+              %td= button_to "Shipped", order_shipped_path(order.id), class: 'btn btn-success pull-right'
+            - else
+              %td
+                %i.fa.fa-check-square-o.shipped.pull-right{"aria-hidden" => "true"}
+
+

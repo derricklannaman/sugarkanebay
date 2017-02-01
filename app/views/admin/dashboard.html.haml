@@ -29,10 +29,14 @@
             = @shipped_orders
             = link_to 'Shipped Orders', orders_shipped_path
         .row.dashboard-info
-          %h5
-            New Data Set Here
-          %p
-            ???
+          %h4.text-center Top Selling Item (past 30 days)
+          %h5.text-center= local_time(30.days.ago)
+          .container
+            - @top_sellers_past_30_days.each_with_index do |(k, v), i|
+              %th{:scope => "row"}="#{i + 1}. "
+              %td= "#{k}"
+              %td= "( #{v} )"
+              %br/
       .col-sm-4
         .row.dashboard-info
           %h5

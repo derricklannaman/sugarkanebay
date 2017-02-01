@@ -8,7 +8,18 @@ class ChargesController < ApplicationController
     @amount = amount.to_i
 
     # TODO: create an alternate ship to address not related to the user
-    current_user.update(user_params)
+    # current_user.update(user_params)
+
+    if current_user.address1.blank? && current_user.city.blank? && current_user.state.blank?
+      current_user.update(
+        lastname: user_params[:lastname],
+        address1: params[:stripeShippingAddressLine1],
+        address2: params[:stripeShippingAddressApt],
+        city: params[:stripeBillingAddressCity],
+        state: params[:stripeBillingAddressState],
+        zip: params[:stripeBillingAddressZip]
+      )
+    end
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
