@@ -1,5 +1,5 @@
 .container
-  %h1.text-center= "Orders Shipped (#{ @shipped_orders.size})"
+  %h1.text-center= "Orders Shipped (#{ @orders_shipped.count })"
 
 .container
   %table.table.table-bordered
@@ -20,11 +20,11 @@
         %th Fulfillment Status
 
     %tbody
-      - @shipped_orders.each_with_index do |order, i|
+      - @orders_shipped.each_with_index do |order, i|
         %tr
           %th{:scope => "row"}="#{i + 1}"
           %td= order.user.id
-          %td= 12345
+          %td= order.guid
           %td= order.user.firstname
           %td= order.user.lastname
           %td= order.user.address1

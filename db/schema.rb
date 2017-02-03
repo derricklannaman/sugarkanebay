@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201232843) do
+ActiveRecord::Schema.define(version: 20170201235827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,11 +83,12 @@ ActiveRecord::Schema.define(version: 20170201232843) do
     t.integer  "cart_id"
     t.decimal  "total"
     t.string   "order_items"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.string   "order_status", default: "pending-payment"
-    t.integer  "quantity",     default: 0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "order_status",       default: "pending-payment"
+    t.integer  "quantity",           default: 0
     t.string   "guid"
+    t.date     "order_shipped_date"
     t.index ["cart_id"], name: "index_orders_on_cart_id", using: :btree
     t.index ["meal_id"], name: "index_orders_on_meal_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree

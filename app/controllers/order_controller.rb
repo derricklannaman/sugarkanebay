@@ -17,6 +17,7 @@ class OrderController < ApplicationController
                               cart_id: cart.id,
                               order_items: params[:meal_name],
                               quantity: 0,
+                              guid: SecureRandom.hex(10),
                               total: meal.price) if order.blank?
       else
         # If there are no current orders, create a new order
@@ -24,6 +25,7 @@ class OrderController < ApplicationController
                               meal_id: params[:meal_id].to_i,
                               cart_id: cart.id,
                               order_items: params[:meal_name],
+                              guid: SecureRandom.hex(10),
                               quantity: 0, total: meal.price)
       end
       if params[:quantity].present?
@@ -67,6 +69,8 @@ class OrderController < ApplicationController
   def shipped
     order = Order.find(params[:order_id])
     order.order_status = 'shipped'
+    order.order_shipped_date = Time.zone.now.strftime("%m/%d/%Y")
+    # binding.pry
     order.save!
     redirect_back fallback_location: daily_orders_path
   end
@@ -90,6 +94,7 @@ class OrderController < ApplicationController
                   meal_id: params[:id].to_i,
                   cart_id: current_user.cart.id,
                   order_items: meal.name,
+                  guid: SecureRandom.hex(10),
                   quantity: 1, total: meal.price )
   end
 

@@ -1,12 +1,22 @@
 class AdminController < ApplicationController
   def dashboard
-    orders = Order.where("created_at >= ?", Time.zone.now.beginning_of_day).where(order_status: 'pending-shipping')
+    orders = Order.where("created_at >= ?", Time.zone.now.beginning_of_day)#.where(order_status: 'pending-shipping')
     @todays_orders = orders.count
     @todays_sales = orders.pluck(:total).sum
-    @shipped_orders = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(order_status: 'shipped').count
-    @orders_past_7days = Order.where("created_at >= ?", 7.days.ago ).count
+    @orders_shipped = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(order_status: 'shipped').count
+    @orders_past_7days = Order.where("order_shipped_date >= ?", 7.days.ago ).count
 
-    top_sellers_past_30_days = Order.where(order_status: 'shipped').where("updated_at >= ?", 30.days.ago)
+    @today = Date.today.strftime("%m/%d/%Y")
+
+    today = Date.today
+
+    orders_shipped = Order.where(order_status: 'shipped')
+
+    count_orders_this_weeks(today, orders_shipped)
+    count_orders_this_month(today, orders_shipped)
+    count_orders_this_year(today, orders_shipped)
+
+    top_sellers_past_30_days = Order.where(order_status: 'shipped').where("order_shipped_date >= ?", 30.days.ago)
     meals = []
     top_sellers_past_30_days.each do |item|
       meals << [item.order_items, item.quantity]
@@ -16,35 +26,27 @@ class AdminController < ApplicationController
 
     meals.each do |meal|
       if meal.first == "Jerk Pork"
-          counts["Jerk Pork"] += meals.first.last
+          counts["Jerk Pork"] += meal.last
+          # binding.pry
         elsif meal.first == "Jerk Chicken"
-          counts["Jerk Chicken"] += meals.first.last
+          counts["Jerk Chicken"] += meal.last
+          # binding.pry
         elsif meal.first == "Curry Goat"
-          counts["Curry Goat"] += meals.first.last
+
+          counts["Curry Goat"] += meal.last
+          # binding.pry
         elsif meal.first == "Ox Tail"
-          counts["Ox Tail"] += meals.first.last
+          # binding.pry
+          counts["Ox Tail"] += meal.last
+          # binding.pry
         elsif meal.first == "Curry Chicken"
-          counts["Curry Chicken"] += meals.first.last
+          counts["Curry Chicken"] += meal.last
+          # binding.pry
       end
     end
 
-    @top_sellers_past_30_days = counts.sort_by { |key, value| value }.reverse.to_h
     # binding.pry
-
-    # @counts = Hash.new(0)
-
-    # top_sellers = meals.sum
-
-    # top_sellers.each do |item|
-    #   @counts[item] += ite
-
-    # end
-    #   carts.each do |cart|
-    #   item_list = cart.orders.pluck(:order_items)
-    #   item_list.each do |order|
-    #     @counts[order] += 1
-    #   end
-    # end
+    @top_sellers_past_30_days = counts.sort_by { |key, value| value }.reverse.to_h
 
   end
 
@@ -78,7 +80,27 @@ class AdminController < ApplicationController
   end
 
   def todays_shipped_orders
-    @shipped_orders = Order.where("updated_at >= ?", Time.zone.now.beginning_of_day).where(order_status: 'shipped')
+    @orders_shipped = Order.where("order_shipped_date >= ?", Time.zone.now.beginning_of_day).where(order_status: 'shipped')
+  end
+
+  private
+
+  def count_orders_this_weeks today, orders
+    total_orders_this_week = orders.where("order_shipped_date >= ?", today.beginning_of_week)
+    @sum_total_for_week = total_orders_this_week.map {|order| order.total }.sum
+    @total_orders_this_week = total_orders_this_week.count
+  end
+
+  def count_orders_this_month today, orders
+    total_orders_this_month = orders.where("order_shipped_date >= ?", today.beginning_of_month)
+    @total_orders_this_month = total_orders_this_month.count
+    @sum_total_for_month = total_orders_this_month.map {|order| order.total }.sum
+  end
+
+  def count_orders_this_year today, orders
+    total_orders_this_year = orders.where("order_shipped_date >= ?", today.beginning_of_year)
+    @total_orders_this_year = total_orders_this_year.count
+    @sum_total_for_year = total_orders_this_year.map {|order| order.total }.sum
   end
 
 end

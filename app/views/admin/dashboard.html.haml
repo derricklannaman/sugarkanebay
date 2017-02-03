@@ -1,9 +1,11 @@
 .container
-  %h1 Admin Dashboard
+  %h1
+    = "Admin Dashboard #{@today}"
 
   .container
     .container
       .col-sm-4
+        1st column
         .row.dashboard-info
           %h5
             Today's Orders
@@ -22,6 +24,7 @@
             = @total_overall_orders
 
       .col-sm-4
+        2nd column
         .row.dashboard-info
           %h5
             Today's Shipped Orders
@@ -38,6 +41,7 @@
               %td= "( #{v} )"
               %br/
       .col-sm-4
+        3rd column
         .row.dashboard-info
           %h5
             Orders Past 7 Days
@@ -46,9 +50,18 @@
 
         .row.dashboard-info
           %h5
-            Total Overall Orders
-          %p
-            = @total_overall_orders
+            = "( #{@total_orders_this_week} ) Orders this week"
+            %span
+              = " equaling [ #{  number_to_currency(@sum_total_for_week)} ]"
 
-
+        .row.dashboard-info
+          %h5
+            = "( #{@total_orders_this_month} ) Orders this month"
+            %span
+              = " equaling [ #{  number_to_currency(@sum_total_for_month)} ]"
+        .row.dashboard-info
+          %h5
+            = "( #{@total_orders_this_year} ) Orders this year"
+            %span
+              = " equaling [ #{  number_to_currency(@sum_total_for_year)} ]"
 
