@@ -15,7 +15,6 @@
   .container
     .row
       = form_tag "/order" do
-        = hidden_field_tag  :redirect_to, request.path
         = hidden_field_tag 'meal_id', @meal.id
         = hidden_field_tag 'meal_name', @meal.name
         .col-md-4.col-sm-4.col-xs-12

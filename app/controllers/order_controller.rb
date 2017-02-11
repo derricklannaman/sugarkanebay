@@ -9,32 +9,47 @@ class OrderController < ApplicationController
     if current_user.cart.present?
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
-      if current_user.orders.any?
-        order = current_user.orders.where(order_status: 'pending-payment').where(meal_id: params[:meal_id]).first
-        # If no order is found for that meal id
-        order = Order.create( user_id: current_user.id,
-                              meal_id: params[:meal_id].to_i,
-                              cart_id: cart.id,
-                              order_items: params[:meal_name],
-                              quantity: 0,
-                              guid: SecureRandom.hex(10),
-                              total: meal.price) if order.blank?
+      requested_quantity = params[:quantity].to_i
+      requested_meal = params[:meal_id].to_i
+
+      if current_user.orders.present?
+        order = current_user.orders.first
+        order_item = order.order_items.select { |item| item.meal_id == requested_meal }
+        if order_item.any?
+          # Update the ordered item in existing order
+          order_item = order_item.first
+          order_item.quantity += requested_quantity
+          order_item.total_price += requested_quantity * meal.price
+          order_item.save!
+
+          order.total += requested_quantity * meal.price
+          order.quantity += requested_quantity
+          order.save!
+        else
+          # Create new ordered item for existing order
+          order_item = OrderItem.create(order_id: order.id,
+                                meal_id: requested_meal,
+                                quantity: requested_quantity,
+                                total_price: meal.price * requested_quantity)
+        end
       else
-        # If there are no current orders, create a new order
+        # Create a NEW order with ordered item
         order = Order.create( user_id: current_user.id,
-                              meal_id: params[:meal_id].to_i,
                               cart_id: cart.id,
-                              order_items: params[:meal_name],
                               guid: SecureRandom.hex(10),
-                              quantity: 0, total: meal.price)
+                              quantity: 0,
+                              total: 0)
+        order_item = OrderItem.create(order_id: order.id,
+                                      meal_id: requested_meal,
+                                      quantity: requested_quantity,
+                                      total_price: meal.price * requested_quantity || 0)
+
       end
       if params[:quantity].present?
-        count = order.quantity += params[:quantity].to_i
-      else
-        count =  order.quantity += 1
+        order.total += requested_quantity * meal.price
+        order.quantity = order.order_items.pluck(:quantity).sum
+        order.save!
       end
-      order.total = meal.price * count
-      order.save!
       flash[:notice] = "#{order.order_items} has been added to your cart"
       redirect_to shop_path
     else
@@ -70,7 +85,6 @@ class OrderController < ApplicationController
     order = Order.find(params[:order_id])
     order.order_status = 'shipped'
     order.order_shipped_date = Time.zone.now.strftime("%m/%d/%Y")
-    # binding.pry
     order.save!
     redirect_back fallback_location: daily_orders_path
   end

@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   def dashboard
+# binding.pry
     orders = Order.where("created_at >= ?", Time.zone.now.beginning_of_day)#.where(order_status: 'pending-shipping')
     @todays_orders = orders.count
     @todays_sales = orders.pluck(:total).sum
@@ -27,25 +28,16 @@ class AdminController < ApplicationController
     meals.each do |meal|
       if meal.first == "Jerk Pork"
           counts["Jerk Pork"] += meal.last
-          # binding.pry
         elsif meal.first == "Jerk Chicken"
           counts["Jerk Chicken"] += meal.last
-          # binding.pry
         elsif meal.first == "Curry Goat"
-
           counts["Curry Goat"] += meal.last
-          # binding.pry
         elsif meal.first == "Ox Tail"
-          # binding.pry
           counts["Ox Tail"] += meal.last
-          # binding.pry
         elsif meal.first == "Curry Chicken"
           counts["Curry Chicken"] += meal.last
-          # binding.pry
       end
     end
-
-    # binding.pry
     @top_sellers_past_30_days = counts.sort_by { |key, value| value }.reverse.to_h
 
   end
