@@ -50,6 +50,7 @@ class OrderController < ApplicationController
         order.quantity = order.order_items.pluck(:quantity).sum
         order.save!
       end
+
       flash[:notice] = "#{order.order_items} has been added to your cart"
       redirect_to shop_path
     else

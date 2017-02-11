@@ -12,21 +12,20 @@
       = render partial: 'shared/ordered_items', locals: {orders: @orders}
 
   .col-sm-5
-    / TODO: fix this ugly shit
     %h3
       Orders Pending Shipping -
       %span
         %p You will receive an email when the order is shipped
-    / %p
-    /   A text confirmation will be sent when your order is shipped.
+    /   TODO: A text confirmation will be sent when your order is shipped.
     %hr/
     - if current_user.cart
-      - @prev_orders.each do |order|
+      -
+      -# preshipped_orders = @preshipped_orders.group_by {|o| o.first.created_at}
+      - @preshipped_orders.each do |order|
         .account-order-date
-          = local_time(order.first)
+          = local_time(order.first.created_at.to_date)
         %ul.prev-order-list
-          - order[1].each do |o|
-            %li
-              = o.order_items
-              = o.quantity
-              = number_to_currency o.total
+          = order.last[:name]
+          = order.first.quantity
+          = number_to_currency(order.first.total_price)
+

@@ -3,10 +3,10 @@
     .row
       .ordered-item-wrapper
         .col-md-3.col-sm-3.col-xs-3.item-image-wrapper
-          = image_tag(order[-1], size: "150x150", class: "ordered-item-image img-fit")
+          = image_tag(order[-1][:image], size: "150x150", class: "ordered-item-image img-fit")
         .col-md-3.col-sm-3.col-xs-3.rm-padding
           .ordered-item
-            = #order.first.order_items
+            = order[-1][:name]
             .ordered-item-count
               = order.first.quantity
         .col-md-3.col-sm-3.col-xs-3.rm-padding

@@ -4,12 +4,12 @@ class CartController < ApplicationController
 
   def show
     order = current_user.cart.orders.where(order_status: "pending-payment").first if current_user.cart.present?
-    order_images = []
+    order_item_info = []
     order.order_items.each do |order|
-      order_images << Meal.find(order.meal_id).thumbnail_image
+      meal = Meal.find(order.meal_id)
+      order_item_info << { name: meal.name, image: meal.thumbnail_image }
     end
-    @orders = order.order_items.to_a.zip(order_images)
-
+    @orders = order.order_items.to_a.zip(order_item_info)
     cart_total
   end
 
@@ -21,8 +21,13 @@ class CartController < ApplicationController
   def account
     if current_user.cart.present?
       @orders = current_user.cart.orders.where(order_status: "pending-payment").sort
-      previous_orders = current_user.cart.orders.where(order_status: "pending-shipping").order(created_at: :desc)
-      @prev_orders = previous_orders.group_by { |order| order.created_at.to_date }.to_a
+      preshipped_orders = current_user.orders.where(order_status: "pending-shipping").first.order_items
+      order_item_info = []
+      preshipped_orders.each do |order|
+        meal = Meal.find(order.meal_id)
+        order_item_info << { name: meal.name, image: meal.thumbnail_image }
+      end
+      @preshipped_orders = preshipped_orders.zip(order_item_info)
     end
   end
 
