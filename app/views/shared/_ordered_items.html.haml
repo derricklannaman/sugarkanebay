@@ -8,9 +8,13 @@
           .ordered-item
             = order[-1][:name]
             .ordered-item-count
-              = order.first.quantity
         .col-md-3.col-sm-3.col-xs-3.rm-padding
           .order-item-total
+            = order.first.quantity
+            %span x
+            %span
+              = number_to_currency(order[-1][:price])
+            %span =
             = number_to_currency order.first.total_price
 
         .col-md-3.col-sm-3.col-xs-3.rm-padding

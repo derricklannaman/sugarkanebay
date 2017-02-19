@@ -8,7 +8,7 @@ class CartController < ApplicationController
     order_item_info = []
     order.order_items.each do |order|
       meal = Meal.find(order.meal_id)
-      order_item_info << { name: meal.name, image: meal.thumbnail_image }
+      order_item_info << { name: meal.name, image: meal.thumbnail_image, price: meal.price }
     end
     @orders = order.order_items.to_a.zip(order_item_info)
     cart_total
@@ -44,11 +44,7 @@ class CartController < ApplicationController
 
   def cart_total
     unless current_user.cart.blank?
-      # binding.pry
-      cart_total = current_user.cart.orders.where(order_status: "pending-payment").pluck(:total).sum
-      current_user.cart.total = cart_total
-      current_user.cart.save!
-      @cart_total = current_user.cart.total
+      @cart_total = current_user.orders.where(order_status: "pending-payment").first.total
     end
   end
 

@@ -62,25 +62,39 @@ class OrderController < ApplicationController
   def add_item
     order_item = OrderItem.find(params[:order_id])
     meal = Meal.find(order_item.meal_id)
+    current_orders = current_user.orders.first
+
     count = order_item.quantity += 1
     order_item.total_price = meal.price * count
     order_item.save!
+    # whole order
+    current_orders.total = order_item.order.order_items.sum(:total_price)
+    current_orders.quantity = order_item.order.order_items.sum(:quantity)
+    current_orders.save
     redirect_back fallback_location: cart_path(current_user.cart)
   end
 
   def subtract_item
     order_item = OrderItem.find(params[:order_id])
     meal = Meal.find(order_item.meal_id)
+    current_orders = current_user.orders.first
     if order_item.quantity == 1
+       # order item
       order_item.destroy
-      flash[:notice] = "#{order_item} has been removed from your cart"
+      # whole order
+      current_orders.total = order_item.order.order_items.sum(:total_price)
+      current_orders.quantity = order_item.order.order_items.sum(:quantity)
+      current_orders.save
+      flash[:notice] = "#{meal.name} has been removed from your cart"
     else
+      # order item
       count = order_item.quantity -= 1
       order_item.total_price = meal.price * count
-      main_order = order_item.order
-      order.total = main_order.order_items.pluck(:total_price).sum
       order_item.save!
-      main_order.save!
+      # whole order
+      current_orders.total = order_item.order.order_items.sum(:total_price)
+      current_orders.quantity = order_item.order.order_items.sum(:quantity)
+      current_orders.save
     end
     redirect_back fallback_location: cart_path(current_user.cart)
   end
