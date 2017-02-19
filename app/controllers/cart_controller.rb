@@ -4,6 +4,7 @@ class CartController < ApplicationController
 
   def show
     order = current_user.cart.orders.where(order_status: "pending-payment").first if current_user.cart.present?
+    return if order.nil?
     order_item_info = []
     order.order_items.each do |order|
       meal = Meal.find(order.meal_id)
@@ -32,16 +33,18 @@ class CartController < ApplicationController
   end
 
   def load_cart
-    orders = current_user.cart.orders.where(order_status: "pending-payment").sort
+    orders = current_user.orders.first.order_items.sort
     order_data = []
     orders.each do |order|
-      order_data << { name: order.order_items, quantity: order.quantity, image: Meal.find(order.meal_id).thumbnail_image }
+      meal = Meal.find(order.meal_id)
+      order_data << { name: meal.name, quantity: order.quantity, image: meal.thumbnail_image }
     end
     render json: order_data
   end
 
   def cart_total
     unless current_user.cart.blank?
+      # binding.pry
       cart_total = current_user.cart.orders.where(order_status: "pending-payment").pluck(:total).sum
       current_user.cart.total = cart_total
       current_user.cart.save!

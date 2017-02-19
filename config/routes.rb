@@ -15,15 +15,14 @@ Rails.application.routes.draw do
   # end
 
   get 'cart/:id', to: 'cart#show', as: 'cart'
-  get 'load_cart/:id', to: 'cart#load_cart', as: 'load_cart' #ajax call to show cart items in hover
-
+  get 'load_cart', to: 'cart#load_cart', as: 'load_cart' #ajax call to show cart items in hover
   get 'checkout', to: 'cart#checkout'
   get 'account', to: 'cart#account'
+
   get 'admin', to: 'admin#dashboard'
   get 'admin/pull_list', to: 'admin#pull_list'
   get 'admin/todays_orders', to: 'admin#todays_orders', as: 'daily_orders'
   get 'admin/todays_shipped_orders', to: 'admin#todays_shipped_orders', as: 'orders_shipped'
-
 
   # resources :destinations, only: [:index]
   resources :meals, only: [:index, :show]

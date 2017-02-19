@@ -1,6 +1,10 @@
 module CartHelper
   def cart_quantity
-    current_user.orders.first.quantity if current_user.cart.present?
+    if current_user.cart.present? && current_user.orders.blank?
+      0
+    else
+      current_user.orders.pluck(:quantity).first
+    end
   end
 
   def paid_amount amount

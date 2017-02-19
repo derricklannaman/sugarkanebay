@@ -24,8 +24,8 @@ function loadCartItems() {
         cart_id = link_parts[link_parts.length -1];
 
     $.ajax({
-      url: "load_cart/" + cart_id,
-      data: cart_id,
+      url: "/load_cart",
+      data: {cart_id: cart_id},
       success: function(data) {
         for(var i = 0; i < data.length; i++) {
           buildCartListItem(data, cartContainer, i);
