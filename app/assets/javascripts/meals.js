@@ -6,7 +6,8 @@ $(document).on('turbolinks:load', function() {
 function showMealStory() {
   var mealInfo = $(".learn-about-meal");
   if (mealInfo.hasClass('meal-info-open')) {
-    $(".learn-about-meal").fadeOut(300).removeClass('meal-info-open')
+    $(".learn-about-meal").removeClass('meal-info-open');
+    $(".learn-about-meal").animate({left: '110%'}, 250);
   }
   else {
     $(".learn-about-meal").attr('style','')

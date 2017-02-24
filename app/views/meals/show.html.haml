@@ -1,15 +1,14 @@
 
-%div{class: 'container meal-marquee', :style => "background-image: url(#{image_path(@meal.standard_image, class: 'img-responsive')});"}
+%div{class: 'container meal-marquee', :style => "background-image: url(#{image_path(@meal.standard_image, class: 'img-responsive center-block')});"}
+  .text-center.name= @meal.name
   - if @meal_count > 0
     .order-status-bar
       .status
         ="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
   .learn-about-meal
     .close-x X
-    %h2= @meal.name
     %h3= @meal.description_details
     =# render partial: 'shared/go_to_cart'
-  .text-center.name= @meal.name
 
 .order-bar-footer
   .container

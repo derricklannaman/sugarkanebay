@@ -10,15 +10,15 @@
     = form_for(current_user, as: current_user, url: charges_path, html: { method: :post }) do |f|
       =# devise_error_messages!
 
-      .form-group
-        = f.label :firstname, "First Name"
+      .field-wrap
+        = f.label :firstname, "First Name", class: "req"
         %br/
-        = f.text_field :firstname, class: 'form-control'
-      .form-group
+        = f.text_field :firstname, class: ''
+      .field-wrap
         = f.label :lastname, "Last Name"
         %br/
         = f.text_field :lastname, class: 'form-control'
-      .form-group
+      .field-wrap
         = f.label :email
         %br/
         = f.email_field :email, class: 'form-control'

@@ -67,9 +67,10 @@ a.mdl-navigation__link.mdl-typography--text-uppercase.footer-section {
   color: #424242 !important;
 }
 
-span.sugarkane {
+span#sugarkane {
   font-family: 'Montserrat Subrayada', sans-serif;
   font-size: 2em;
+  color: #424242;
   &:hover {
     cursor: pointer;
   }
@@ -81,13 +82,20 @@ span.sugarkane {
       color:$white;
     }*/
 
-span.kitchen {
+span#kitchen {
   font-family: 'Cinzel Decorative', cursive;
   font-size: 1.3em;
   letter-spacing: 0.6em;
   margin-left: 0.5em;
+  color: #424242;
   &:hover {
     cursor: pointer;
+  }
+}
+
+a.center-logo {
+  &:hover {
+    text-decoration: none;
   }
 }
 
@@ -95,6 +103,7 @@ span.kitchen {
   color: #424242;
   text-align: center;
   margin: auto;
+  text-decoration: none;
 }
 
 a.access-type {
@@ -114,3 +123,29 @@ a.access-type {
 img.img-fit {
   object-fit: cover;
 }
+
+
+.messages {
+  text-align: center;
+  background: rgba(0,0,0, 0.1);
+  padding: 5px;
+  font-size: 18px;
+  color: #FFF;
+  /*margin-bottom: 15px;*/
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+    cursor:pointer;
+    display:block;
+    /*width: 30px;*/
+    color: #333;
+    text-align:center;
+    position:relative;
+}
+
+
+
+
+

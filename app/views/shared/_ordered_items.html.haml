@@ -1,9 +1,16 @@
 .container
+  .row
+    .col-md-offset-1.col-md-4.col-sm-4.col-xs-4
+      %h1 Item
+    .col-md-4.col-sm-4.col-xs-4
+      %h1 Price
+%hr/
+.container
   - @orders.each do |order|
     .row
       .ordered-item-wrapper
-        .col-md-3.col-sm-3.col-xs-3.item-image-wrapper
-          = image_tag(order[-1][:image], size: "150x150", class: "ordered-item-image img-fit")
+        .col-md-1.col-sm-1.col-xs-1.item-image-wrapper
+          = image_tag(order[-1][:image], size: "70", class: "ordered-item-image img-fit")
         .col-md-3.col-sm-3.col-xs-3.rm-padding
           .ordered-item
             = order[-1][:name]

@@ -6,6 +6,7 @@ class OrderController < ApplicationController
   end
 
   def create
+    binding.pry
     if current_user.cart.present?
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
@@ -33,6 +34,7 @@ class OrderController < ApplicationController
                                 total_price: meal.price * requested_quantity)
         end
       else
+        binding.pry
         # Create a NEW order with ordered item
         order = Order.create( user_id: current_user.id,
                               cart_id: cart.id,
@@ -50,8 +52,7 @@ class OrderController < ApplicationController
         order.quantity = order.order_items.pluck(:quantity).sum
         order.save!
       end
-
-      flash[:notice] = "#{order.order_items} has been added to your cart"
+      flash[:notice] = "#{params[:meal_name]} has been added to your cart"
       redirect_to shop_path
     else
       flash[:notice] = "Please sign up or sign in first."
@@ -71,6 +72,7 @@ class OrderController < ApplicationController
     current_orders.total = order_item.order.order_items.sum(:total_price)
     current_orders.quantity = order_item.order.order_items.sum(:quantity)
     current_orders.save
+    flash[:notice] = "Another #{meal.name} has been added from your cart"
     redirect_back fallback_location: cart_path(current_user.cart)
   end
 
@@ -85,7 +87,6 @@ class OrderController < ApplicationController
       current_orders.total = order_item.order.order_items.sum(:total_price)
       current_orders.quantity = order_item.order.order_items.sum(:quantity)
       current_orders.save
-      flash[:notice] = "#{meal.name} has been removed from your cart"
     else
       # order item
       count = order_item.quantity -= 1
@@ -95,6 +96,7 @@ class OrderController < ApplicationController
       current_orders.total = order_item.order.order_items.sum(:total_price)
       current_orders.quantity = order_item.order.order_items.sum(:quantity)
       current_orders.save
+      flash[:notice] = "#{meal.name} has been removed from your cart"
     end
     redirect_back fallback_location: cart_path(current_user.cart)
   end
@@ -109,9 +111,9 @@ class OrderController < ApplicationController
 
   def return_to_order_url
     return if current_user.present? && cookies[:entry_point_url].blank?
-    # if current_user.blank? && cookies[:entry_point_url].present?
-    #   initial_cart_with_first_order_after_sign_in
-    # end
+    if current_user.blank? && cookies[:entry_point_url].present?
+      initial_cart_with_first_order_after_sign_in
+    end
     if current_user.present?
       cookies.delete :entry_point_url
     else
@@ -121,13 +123,16 @@ class OrderController < ApplicationController
   end
 
   def initial_cart_with_first_order_after_sign_in
-    meal = Meal.find(params[:meal_id])
-    Order.create( user_id: current_user.id,
-                  meal_id: params[:id].to_i,
-                  cart_id: current_user.cart.id,
-                  order_items: meal.name,
-                  guid: SecureRandom.hex(10),
-                  quantity: 1, total: meal.price )
+    # binding.pry
+    redirect_to url_for(:controller => :order, :action => :)
+    # redirect_to url_for(:action => :create)
+    # meal = Meal.find(params[:meal_id])
+    # Order.create( user_id: current_user.id,
+    #               meal_id: params[:id].to_i,
+    #               cart_id: current_user.cart.id,
+    #               order_items: meal.name,
+    #               guid: SecureRandom.hex(10),
+    #               quantity: 1, total: meal.price )
   end
 
 end

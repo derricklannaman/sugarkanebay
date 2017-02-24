@@ -35,6 +35,7 @@ img.meal-panel-image {
   margin-top: -7em;
   position: relative;
   padding-bottom: 2em;
+  margin-top: -150px;
 }
 
 input.order-bar-counter {
@@ -68,7 +69,7 @@ input.order-bar-button {
 }
 
 .learn-more-link-container {
-  margin: 1.5em auto;
+  /*margin: 1.5em auto;*/
 }
 
 .learn-more-link-container .order-bar-learn-more {
@@ -86,6 +87,8 @@ input.order-bar-button {
   font-size: 3em;
   color: #FFF;
   text-shadow: 1px 1px 2px #999;
+  position: relative;
+  z-index: 1;
 }
 
 .order-status-bar {
@@ -100,6 +103,7 @@ input.order-bar-button {
 .learn-about-meal {
   width: 50%;
   padding: 2em;
+  margin-top: -59px;
   position: relative;
   height: 92%;
   background-color: rgba(0, 0, 0, 0.3);

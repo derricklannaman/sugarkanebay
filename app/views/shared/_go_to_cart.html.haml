@@ -1,3 +1,4 @@
 - unless current_user.blank? || current_user.cart.blank?
-  = link_to "Go to Cart", current_user.cart
+  = link_to "Go to Cart", current_user.cart, class: "button button-block center-format"
+
 

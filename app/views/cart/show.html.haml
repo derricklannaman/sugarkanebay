@@ -1,13 +1,17 @@
 .container
   .row
-    %h1.text-center= "#{current_user.firstname}'s Cart #{'...is currently empty' if current_user.cart && !@orders}"
-  .container
-    .row
-      - if current_user.cart && @orders
-        = render partial: 'shared/ordered_items'
-        = render 'cart_total'
-        = link_to "Proceed to Checkout", checkout_path, class: "button button-block center-format"
-      - else
+    - if current_user.cart && @orders.present?
+      %h1.text-center
+        = "#{current_user.firstname}'s Cart"
+        %span= render 'cart_total'
+      = render partial: 'shared/ordered_items'
+      = link_to "Proceed to Checkout", checkout_path, class: "button button-block center-format"
+      = link_to "Continue Browsing", shop_path, class: "button button-block center-format"
+
+    - else
+      .row
+        %h1.text-center= "#{current_user.firstname}'s Cart #{'is currently empty'}"
+      .row
         %h1.text-center
         = link_to "Continue Browsing", shop_path, class: "button button-block center-format"
 

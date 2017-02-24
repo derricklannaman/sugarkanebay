@@ -2,10 +2,8 @@
   %h1.text-center
     Dinner Shop Page
     %hr/
-
   .container
     .row
-
       .col-md-6
         - @meal_group_left.each do |meal|
           = link_to meal_path(meal.id) do

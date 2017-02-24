@@ -4,6 +4,7 @@ class CartController < ApplicationController
 
   def show
     order = current_user.cart.orders.where(order_status: "pending-payment").first if current_user.cart.present?
+    @order_id = order.guid
     return if order.nil?
     order_item_info = []
     order.order_items.each do |order|
