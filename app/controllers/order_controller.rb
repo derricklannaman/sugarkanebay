@@ -112,7 +112,7 @@ class OrderController < ApplicationController
   def return_to_order_url
     return if current_user.present? && cookies[:entry_point_url].blank?
     if current_user.blank? && cookies[:entry_point_url].present?
-      initial_cart_with_first_order_after_sign_in
+      # initial_cart_with_first_order_after_sign_in
     end
     if current_user.present?
       cookies.delete :entry_point_url
@@ -124,8 +124,6 @@ class OrderController < ApplicationController
 
   def initial_cart_with_first_order_after_sign_in
     # binding.pry
-    redirect_to url_for(:controller => :order, :action => :)
-    # redirect_to url_for(:action => :create)
     # meal = Meal.find(params[:meal_id])
     # Order.create( user_id: current_user.id,
     #               meal_id: params[:id].to_i,
