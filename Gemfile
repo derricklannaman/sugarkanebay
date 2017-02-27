@@ -57,4 +57,5 @@ gem 'simplecov', :require => false, :group => :test
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'stripe'
+gem 'rubocop', '~> 0.47.1', require: false
 # gem 'devise-bootstrapped', '~> 0.1.1'
