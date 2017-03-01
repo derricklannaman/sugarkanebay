@@ -80,11 +80,11 @@ test:
 #
 production:
   <<: *default
-  # database: sugarkanebay_production
-  # username: sugarkanebay
-  # password: <%= ENV['SUGARKANEBAY_DATABASE_PASSWORD'] %>
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  database: sugarkanebay_production
+  username: <%= ENV[SUGARKANE_KITCHEN_PRODUCTION] %>
+  password: <%= ENV['SUGARKANEBAY_DATABASE_PASSWORD'] %>
+  # database: <%= ENV['RDS_DB_NAME'] %>
+  # username: <%= ENV['RDS_USERNAME'] %>
+  # password: <%= ENV['RDS_PASSWORD'] %>
+  # host: <%= ENV['RDS_HOSTNAME'] %>
+  # port: <%= ENV['RDS_PORT'] %>
