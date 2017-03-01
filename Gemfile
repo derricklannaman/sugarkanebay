@@ -49,13 +49,12 @@ group :development do
   gem 'haml-rails'
   gem 'pry-rails'
   gem 'rails_db'
+  gem 'simplecov', :require => false, :group => :test
+  gem 'rubocop', '~> 0.47.1', require: false
 end
-
-gem 'simplecov', :require => false, :group => :test
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'stripe'
-gem 'rubocop', '~> 0.47.1', require: false
 # gem 'devise-bootstrapped', '~> 0.1.1'
