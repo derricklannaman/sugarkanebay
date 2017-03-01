@@ -80,6 +80,11 @@ test:
 #
 production:
   <<: *default
-  database: sugarkanebay_production
-  username: sugarkanebay
-  password: <%= ENV['SUGARKANEBAY_DATABASE_PASSWORD'] %>
+  # database: sugarkanebay_production
+  # username: sugarkanebay
+  # password: <%= ENV['SUGARKANEBAY_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
