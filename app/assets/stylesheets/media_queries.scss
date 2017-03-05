@@ -1,6 +1,20 @@
 /*MEDIA QUERIES*/
 
 @media(max-width: 575px) and (min-width: 400px) { /*For testing media queries by color change*/
+  .learn-about-meal {
+    height: 55%;
+    left: 15%;
+  }
+  .learn-about-meal .content {
+    left: 25%;
+  }
+  .learn-about-meal .name {
+    font-size: 4em;
+    padding-bottom: 12px;
+    text-align: center;
+  }
+
+
 /*  input.order-bar-counter {
     background-color: purple;
     font-size: 4em;
@@ -18,6 +32,18 @@
 }
 
 @media(min-width:576px) and (max-width: 767px) { /*For testing media queries by color change*/
+
+  .learn-about-meal {
+    left: 15%;
+  }
+
+  .learn-about-meal .name {
+    font-size: 5em;
+  }
+  input.order-bar-counter {
+    background-color: orange;
+  }
+
 /*  input.order-bar-counter {
     background-color: purple;
     font-size: 4em;
@@ -29,15 +55,33 @@
   }*/
 }
 
-@media(min-width:768px) and (max-width: 991px){ /*For testing media queries by color change*/
+@media(min-width:766px) and (max-width: 949px){
+  input.order-bar-counter {
+    background-color: blue;
+  }
+  .learn-about-meal .name {
+    font-size: 5em;
+  }
+
+
+}
+
+
+@media(min-width:950px) and (max-width: 991px) { /*For testing media queries by color change*/
 /*  .order-bar-footer {
     padding-bottom: 3em;
     margin-top: -125px;
-  }
+  }*/
   input.order-bar-counter {
-    background-color: purple;
+    background-color: green;
   }
-  input.order-bar-button {
+
+  .learn-about-meal .name {
+    font-size: 5em;
+  }
+
+
+/*  input.order-bar-button {
     font-size: 2.3em;
   }
   .learn-more-link-container .order-bar-learn-more {
