@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  $('.order-bar-learn-more').on('click', showMealStory);
+  // $('.order-bar-learn-more').on('click', showMealStory);
   $('.close-x').click(closeX);
 });
 
