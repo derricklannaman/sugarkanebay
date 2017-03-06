@@ -1,10 +1,10 @@
 class DestinationsController < ApplicationController
 
-  before_action :find_destination, except: :index
-  before_action :immersive_layout, except: [:index]
+  # before_action :find_destination, except: :index
+  # before_action :immersive_layout, except: [:index]
 
   def index
-    @destinations = Destination.all
+    # @destinations = Destination.all
   end
 
   # def discovery
