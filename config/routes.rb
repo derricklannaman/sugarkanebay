@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'shop', to: 'pages#shop'
   get 'how-it-works', to: 'pages#how_it_works', as: 'how'
 
-  # get 'discover/:destination_name/:id', to: 'destinations#discovery', as: 'destination_discovery'
+  get 'discover/:destination_name/:id', to: 'destinations#discovery', as: 'destination_discovery'
 
   # Interactive Page Routing
   # ["music", "foods", "art", "geography", "culture", "political", "points_of_interest"].each do |type|
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'admin/todays_orders', to: 'admin#todays_orders', as: 'daily_orders'
   get 'admin/todays_shipped_orders', to: 'admin#todays_shipped_orders', as: 'orders_shipped'
 
-  # resources :destinations, only: [:index]
+  resources :destinations, only: [:index]
   resources :meals, only: [:index, :show]
   resources :order do
     post 'add_item'
