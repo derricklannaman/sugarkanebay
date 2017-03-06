@@ -5,8 +5,8 @@
         = "#{current_user.firstname}'s Cart"
         %span= render 'cart_total'
       = render partial: 'shared/ordered_items'
-      = link_to "Proceed to Checkout", checkout_path, class: "button button-block center-format"
-      = link_to "Continue Browsing", shop_path, class: "button button-block center-format"
+      =# link_to "Proceed to Checkout", checkout_path, class: "button button-block center-format"
+      =# link_to "Continue Browsing", shop_path, class: "button button-block center-format"
 
     - else
       .row

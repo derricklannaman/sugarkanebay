@@ -9,7 +9,7 @@
     left: 25%;
   }
   .learn-about-meal .name {
-    font-size: 4em;
+    font-size: 3em;
     padding-bottom: 12px;
     text-align: center;
   }
@@ -38,7 +38,7 @@
   }
 
   .learn-about-meal .name {
-    font-size: 5em;
+    font-size: 4em;
   }
   input.order-bar-counter {
     background-color: orange;
@@ -60,7 +60,7 @@
     background-color: blue;
   }
   .learn-about-meal .name {
-    font-size: 5em;
+    font-size: 4em;
   }
 
 
@@ -77,7 +77,7 @@
   }
 
   .learn-about-meal .name {
-    font-size: 5em;
+    font-size: 4em;
   }
 
 
@@ -103,6 +103,10 @@
   .learn-more-link-container .order-bar-learn-more {
     font-size: 2.3em;
   }*/
+  .learn-about-meal .name {
+    font-size: 4em;
+  }
+
 }
 
 @media(min-width:1200px){ /*For testing media queries by color change*/

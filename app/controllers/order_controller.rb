@@ -6,7 +6,7 @@ class OrderController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     if current_user.cart.present?
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
@@ -34,7 +34,6 @@ class OrderController < ApplicationController
                                 total_price: meal.price * requested_quantity)
         end
       else
-        binding.pry
         # Create a NEW order with ordered item
         order = Order.create( user_id: current_user.id,
                               cart_id: cart.id,

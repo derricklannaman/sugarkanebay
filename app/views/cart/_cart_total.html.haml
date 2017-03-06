@@ -1,2 +1,4 @@
 %div
   %h3= "Cart Total: #{number_to_currency(@cart_total)}"
+  = link_to "Proceed to Checkout", checkout_path, class: "button button-block center-format"
+  = link_to "Continue Browsing", shop_path, class: "button button-block center-format"
