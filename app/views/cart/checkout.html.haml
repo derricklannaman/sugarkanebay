@@ -1,51 +1,77 @@
-%h1.col-sm-offset-4
+%h1
   Checkout
 %hr/
 
-.row
-  .col-sm-4
-    %h3
-      Ship to
-    %hr/
-    = form_for(current_user, as: current_user, url: charges_path, html: { method: :post }) do |f|
-      =# devise_error_messages!
+.container
+  .row
+    .col-sm-4
+      %h3
+        Billing Address
+      %hr/
+      = form_for(current_user, as: current_user, url: charges_path, html: { method: :post }) do |f|
+        =# devise_error_messages!
 
-      .field-wrap
-        = f.label :firstname, "First Name", class: "req"
-        %br/
-        = f.text_field :firstname, class: ''
-      .field-wrap
-        = f.label :lastname, "Last Name"
-        %br/
-        = f.text_field :lastname, class: 'form-control'
-      .field-wrap
-        = f.label :email
-        %br/
-        = f.email_field :email, class: 'form-control'
+        .field-wrap.checkout
+          = f.label :firstname, 'First Name', class: 'label-spacer'
+          = f.text_field :firstname
+        .field-wrap.checkout
+          = f.label :lastname, 'Last Name', class: 'label-spacer'
+          = f.text_field :lastname
+        .field-wrap.checkout
+          = f.label :email, class: 'label-spacer'
+          = f.email_field :email
+        / .field-wrap.checkout
+        /   =# f.label 'Billing Address', class: 'label-spacer'
+        /   =# f.text_field :address1
+        / .field-wrap.checkout
+        /   =# f.label 'Apt/Suite', class: 'label-spacer'
+        /   =# f.text_field :address2
+        / .field-wrap.checkout
+        /   =# f.label :city, class: 'label-spacer'
+        /   =# f.text_field :city
+        / .field-wrap.checkout
+        /   =# f.label :state, class: 'label-spacer'
+        /   =# f.text_field :state
+        / .field-wrap.checkout
+        /   =# f.label :zip, class: 'label-spacer'
+        /   =# f.text_field :zip
 
-      .form-group
-        = hidden_field :amount, @cart_total
-        - if current_user.address1.blank? && current_user.city.blank? && current_user.state.blank?
-          %script.stripe-button{"data-amount" => "#{@cart_total*100}", "data-description" => "Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", "data-shippingAddress" =>'true', "data-email"=> "#{current_user.email}", :src => "https://checkout.stripe.com/checkout.js"}
-        - else
-          %script.stripe-button{"data-amount" => "#{@cart_total*100}", "data-description" => "Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", "data-email"=> "#{current_user.email}", :src => "https://checkout.stripe.com/checkout.js"}
 
-    %hr/
-  .col-sm-4
-    %h3
-      Order
-    %hr/
+    .col-md-2
+      %h3
+        Payment Method
+      .section-indicator
+      - if current_user.cart
+        .form-group
+          = hidden_field :amount, @cart_total
+          - if current_user.address1.blank? && current_user.city.blank? && current_user.state.blank?
+            %script.stripe-button{'data-amount' => "#{@cart_total*100}", "data-key" => Rails.configuration.stripe[:publishable_key], "data-name" => "SugarKane Kitchen" ,"data-locale" => "auto", "data-shippingAddress" =>'true', "data-email"=> "#{current_user.email}", :src => "https://checkout.stripe.com/checkout.js"}
+          - else
+            %script.stripe-button{"data-amount" => "#{@cart_total*100}", "data-description" => "Order", "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", "data-email"=> "#{current_user.email}", :src => "https://checkout.stripe.com/checkout.js"}
 
-    %ul
-    - if current_user.cart
-      =# render partial: 'shared/ordered_items', locals: {orders: @orders}
-
-  .col-sm-4
-    %h3
-      Total
-    %hr/
-    - if current_user.cart
-      = render 'cart_total'
+    .col-md-6
+      %h3
+        Review Order -
+        = render 'cart_total'
+      %hr/
+      - if current_user.cart
+        - @orders.each do |order|
+          .row
+            .ordered-item-wrapper
+              .col-md-4.col-sm-4.col-xs-4.item-image-wrapper
+                = image_tag(order[-1][:image], size: "90", class: "ordered-item-image img-fit")
+              .col-md-4.col-sm-4.col-xs-4.rm-padding
+                .ordered-item
+                  = order[-1][:name]
+                  .ordered-item-count
+              .col-md-4.col-sm-4.col-xs-4.rm-padding
+                .order-item-total
+                  = order.first.quantity
+                  %span x
+                  %span
+                    = number_to_currency(order[-1][:price])
+                  %span =
+                  = number_to_currency order.first.total_price
 
 
 

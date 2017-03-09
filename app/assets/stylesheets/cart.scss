@@ -125,10 +125,10 @@ a.shopping-cart {
   height: 5em;
   font-size: 15px;
   float: left;
-  padding: 24px;
+  /*padding: 24px;*/
+  padding-top: 24px;
   text-align: center;
   width: 100%;
-  /*border-left: 1px solid rgba(255,255,255, 0.4)*/
 }
 
 .ordered-item {

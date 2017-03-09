@@ -16,7 +16,15 @@ class CartController < ApplicationController
   end
 
   def checkout
-    @orders = current_user.cart.orders.where(order_status: "pending-payment").sort
+    order = current_user.cart.orders.where(order_status: "pending-payment").first if current_user.cart.present?
+    return if order.nil?
+    order_item_info = []
+    order.order_items.each do |order|
+      meal = Meal.find(order.meal_id)
+      order_item_info << { name: meal.name, image: meal.thumbnail_image, price: meal.price }
+    end
+    @orders = order.order_items.to_a.zip(order_item_info)
+    # binding.pry
     cart_total
   end
 
