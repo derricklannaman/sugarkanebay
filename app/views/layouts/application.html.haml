@@ -15,6 +15,7 @@
     - if flash[:notice].present?
       .messages
         = flash[:notice]
+        %i.fa.fa-check-square-o
 
     %div{class: "#{controller_name}-#{action_name}-full-page", id: "main-content-wrapper"}
       = yield

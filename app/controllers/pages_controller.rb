@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
+  # before_action :return_to_order_url, only: :shop
 
   def index
-    @destination = Destination.find(1)
-    @discovery_contents = @destination.discovery_contents.limit(4)
+    # @destination = Destination.find(1)
+    # @discovery_contents = @destination.discovery_contents.limit(4)
   end
 
   def shop

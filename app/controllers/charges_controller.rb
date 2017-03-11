@@ -1,5 +1,7 @@
+# Stripe Charges
 class ChargesController < ApplicationController
   def new
+    # for Stripe
   end
 
   def create
@@ -20,10 +22,9 @@ class ChargesController < ApplicationController
         zip: params[:stripeBillingAddressZip]
       )
     end
-
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
@@ -36,11 +37,10 @@ class ChargesController < ApplicationController
     current_user.cart.orders.each do |order|
       if order.order_status == "pending-payment"
         # binding.pry
-        # order.order_status = "pending-shipping"
-        # order.save!
+        order.order_status = "pending-shipping"
+        order.save!
       end
     end
-
     redirect_to controller: 'cart', action: 'account', locals: { paid: @amount }
 
   rescue Stripe::CardError => e

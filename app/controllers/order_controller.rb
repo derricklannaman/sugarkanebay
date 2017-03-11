@@ -1,12 +1,11 @@
 class OrderController < ApplicationController
-  before_action :return_to_order_url, only: :create
+  # before_action :return_to_order_url, only: :create
   before_action :authenticate_user!, only: :create
 
   def new
   end
 
   def create
-    # binding.pry
     if current_user.cart.present?
       cart = current_user.cart
       meal = Meal.find(params[:meal_id])
@@ -111,7 +110,7 @@ class OrderController < ApplicationController
   def return_to_order_url
     return if current_user.present? && cookies[:entry_point_url].blank?
     if current_user.blank? && cookies[:entry_point_url].present?
-      # initial_cart_with_first_order_after_sign_in
+      initial_cart_with_first_order_after_sign_in
     end
     if current_user.present?
       cookies.delete :entry_point_url
@@ -122,7 +121,6 @@ class OrderController < ApplicationController
   end
 
   def initial_cart_with_first_order_after_sign_in
-    # binding.pry
     # meal = Meal.find(params[:meal_id])
     # Order.create( user_id: current_user.id,
     #               meal_id: params[:id].to_i,
