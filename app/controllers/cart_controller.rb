@@ -4,9 +4,10 @@ class CartController < ApplicationController
   before_action :check_cart_exist, only: :show
 
   def show
-    order = current_user.cart.orders.where(order_status: 'pending-payment')
-                        .first if current_user.cart.present?
-    # @order_id = order.guid
+    if current_user.cart.present?
+      order = current_user.cart.orders.where(order_status: 'pending-payment')
+                          .first
+    end
     return if order.nil?
     order_item_info = []
     order.order_items.each do |item|
@@ -19,8 +20,10 @@ class CartController < ApplicationController
   end
 
   def checkout
-    order = current_user.cart.orders.where(order_status: 'pending-payment')
-                        .first if current_user.cart.present?
+    if current_user.cart.present?
+      order = current_user.cart.orders.where(order_status: 'pending-payment')
+                          .first
+    end
     return if order.nil?
     order_item_info = []
     order.order_items.each do |item|

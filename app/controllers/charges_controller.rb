@@ -11,7 +11,8 @@ class ChargesController < ApplicationController
     # TODO: create an alternate ship to address not related to the user
     # current_user.update(user_params)
 
-    if current_user.address1.blank? && current_user.city.blank? && current_user.state.blank?
+    if current_user.address1.blank? && current_user.city.blank? &&
+       current_user.state.blank?
       current_user.update(
         lastname: user_params[:lastname],
         address1: params[:stripeShippingAddressLine1],
@@ -26,18 +27,18 @@ class ChargesController < ApplicationController
       source: params[:stripeToken]
     )
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+    Stripe::Charge.create(
+      customer: customer.id,
+      amount: @amount,
+      description: 'Rails Stripe customer',
+      currency: 'usd'
     )
 
     # TODO: Create OrderProcessorClass to handle this transaction
     current_user.cart.orders.each do |order|
-      if order.order_status == "pending-payment"
+      if order.order_status == 'pending-payment'
         Inventory.reduce_current_quantity(order.order_items)
-        order.order_status = "pending-shipping"
+        order.order_status = 'pending-shipping'
         order.save!
       end
     end
@@ -48,15 +49,10 @@ class ChargesController < ApplicationController
     redirect_to new_charge_path
   end
 
-
-
   private
 
-    def user_params
-      params.require(:user).permit(:firstname, :lastname, :email, :address1,
-                                   :address2, :city, :state, :zip, :phone)
-    end
-
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email, :address1,
+                                 :address2, :city, :state, :zip, :phone)
+  end
 end
-
-

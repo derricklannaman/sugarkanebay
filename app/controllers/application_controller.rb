@@ -23,5 +23,4 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :number_of_items_in_cart
-
 end
