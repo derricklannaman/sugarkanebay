@@ -27,6 +27,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'haml-rails'
   gem 'listen', '~> 3.0.5'
+  gem "localtower"
   gem 'pry-rails'
   gem 'rails_db'
   gem 'rubocop', '~> 0.47.1', require: false
