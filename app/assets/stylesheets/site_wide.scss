@@ -126,12 +126,13 @@ img.img-fit {
 
 
 .messages {
+  float: left;
+  width: 100vw;
   text-align: center;
   background: rgba(0,0,0, 0.1);
   padding: 5px;
   font-size: 18px;
   color: #FFF;
-  /*margin-bottom: 15px;*/
 }
 
 input[type=number]::-webkit-inner-spin-button,

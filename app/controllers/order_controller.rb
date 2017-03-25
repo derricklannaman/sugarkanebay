@@ -1,5 +1,5 @@
 class OrderController < ApplicationController
-  # before_action :return_to_order_url, only: :create
+  before_action :return_to_order_url, only: :create
   before_action :authenticate_user!, only: :create
 
   def new
@@ -110,7 +110,7 @@ class OrderController < ApplicationController
   def return_to_order_url
     return if current_user.present? && cookies[:entry_point_url].blank?
     if current_user.blank? && cookies[:entry_point_url].present?
-      initial_cart_with_first_order_after_sign_in
+      # initial_cart_with_first_order_after_sign_in
     end
     if current_user.present?
       cookies.delete :entry_point_url

@@ -32,4 +32,9 @@ Rails.application.routes.draw do
     post 'shipped'
   end
   resources :charges
+
+  if Rails.env.development?
+    mount Localtower::Engine, at: "localtower"
+  end
+
 end

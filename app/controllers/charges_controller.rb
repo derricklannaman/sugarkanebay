@@ -1,7 +1,6 @@
 # Stripe Charges
 class ChargesController < ApplicationController
   def new
-    # for Stripe
   end
 
   def create
@@ -34,9 +33,11 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
+    # TODO: Create OrderProcessorClass to handle this transaction
     current_user.cart.orders.each do |order|
       if order.order_status == "pending-payment"
-        # binding.pry
+        binding.pry
+        # TODO: create InventoryProcessorClass to handle this transaction
         order.order_status = "pending-shipping"
         order.save!
       end

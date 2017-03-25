@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204211917) do
+ActiveRecord::Schema.define(version: 20170325191331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,27 @@ ActiveRecord::Schema.define(version: 20170204211917) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["destination_id"], name: "index_discovery_contents_on_destination_id", using: :btree
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "order_item_id"
+    t.integer  "minimum_level"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "meal_id",                          null: false
+    t.integer  "current_quantity",     default: 0
+    t.integer  "recommended_quantity", default: 0
+    t.string   "name"
+    t.index ["order_item_id"], name: "index_inventories_on_order_item_id", using: :btree
+  end
+
+  create_table "meal_inventories", force: :cascade do |t|
+    t.integer  "meal_id"
+    t.integer  "inventory_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["inventory_id"], name: "index_meal_inventories_on_inventory_id", using: :btree
+    t.index ["meal_id"], name: "index_meal_inventories_on_meal_id", using: :btree
   end
 
   create_table "meals", force: :cascade do |t|
@@ -133,6 +154,8 @@ ActiveRecord::Schema.define(version: 20170204211917) do
 
   add_foreign_key "carts", "users"
   add_foreign_key "discovery_contents", "destinations"
+  add_foreign_key "meal_inventories", "inventories"
+  add_foreign_key "meal_inventories", "meals"
   add_foreign_key "meals", "destinations"
   add_foreign_key "order_items", "meals"
   add_foreign_key "order_items", "orders"
