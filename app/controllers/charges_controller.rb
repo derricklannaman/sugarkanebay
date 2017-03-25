@@ -36,8 +36,7 @@ class ChargesController < ApplicationController
     # TODO: Create OrderProcessorClass to handle this transaction
     current_user.cart.orders.each do |order|
       if order.order_status == "pending-payment"
-        binding.pry
-        # TODO: create InventoryProcessorClass to handle this transaction
+        Inventory.reduce_current_quantity(order.order_items)
         order.order_status = "pending-shipping"
         order.save!
       end
