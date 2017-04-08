@@ -1,5 +1,5 @@
 class OrderController < ApplicationController
-  before_action :return_to_order_url, only: :create
+  before_action :manage_entry_point_cookies, only: :create
   before_action :authenticate_user!, only: :create
 
   def new
@@ -107,27 +107,16 @@ class OrderController < ApplicationController
     redirect_back fallback_location: daily_orders_path
   end
 
-  def return_to_order_url
+  def manage_entry_point_cookies
     return if current_user.present? && cookies[:entry_point_url].blank?
-    if current_user.blank? && cookies[:entry_point_url].present?
-      # initial_cart_with_first_order_after_sign_in
-    end
-    if current_user.present?
+    if current_user.present? && cookies[:entry_point_url].present?
       cookies.delete :entry_point_url
+      cookies.delete :entry_point_quantity
     else
       cookies[:entry_point_url] = ''
       cookies[:entry_point_url] = request.referer
+      cookies[:entry_point_quantity] = params[:quantity]
     end
-  end
-
-  def initial_cart_with_first_order_after_sign_in
-    # meal = Meal.find(params[:meal_id])
-    # Order.create( user_id: current_user.id,
-    #               meal_id: params[:id].to_i,
-    #               cart_id: current_user.cart.id,
-    #               order_items: meal.name,
-    #               guid: SecureRandom.hex(10),
-    #               quantity: 1, total: meal.price )
   end
 
 end
