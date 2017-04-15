@@ -12,7 +12,8 @@ class OrderController < ApplicationController
       requested_quantity = params[:quantity].to_i
       requested_meal = params[:meal_id].to_i
 
-      if current_user.orders.present?
+      if current_user.orders.where(order_status: 'pending-payment').present? #def current_orders_exist?
+        # binding.pry
         order = current_user.orders.first
         order_item = order.order_items.select { |item| item.meal_id == requested_meal }
         if order_item.any?
@@ -61,7 +62,7 @@ class OrderController < ApplicationController
   def add_item
     order_item = OrderItem.find(params[:order_id])
     meal = Meal.find(order_item.meal_id)
-    current_orders = current_user.orders.first
+    current_orders = current_user.orders.first #def current_orders_exist?
 
     count = order_item.quantity += 1
     order_item.total_price = meal.price * count

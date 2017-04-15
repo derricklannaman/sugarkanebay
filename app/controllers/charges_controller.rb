@@ -40,8 +40,22 @@ class ChargesController < ApplicationController
         Inventory.reduce_current_quantity(order.order_items)
         order.order_status = 'pending-shipping'
         order.save!
+
+        order_history = OrderHistory.create(user_id: order.user_id, total: order.total,
+                                     quantity: order.quantity, guid: order.guid)
+        order.order_items.each do |item|
+          OrderedItemHistory.create(order_history_id: order_history.id,
+                                    meal_id: item.meal_id, quantity: item.quantity,
+                                    total_price: item.total_price)
+        end
+
+        binding.pry
+        # TODO: Place order in 'order history', delete order and remove items from cart"
       end
     end
+
+      #TODO:  "Fire off a confirmation email process"
+
     redirect_to controller: 'cart', action: 'account', locals: { paid: @amount }
 
   rescue Stripe::CardError => e

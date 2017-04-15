@@ -5,11 +5,12 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :meals, through: :orders
+  has_many :order_histories
 
   after_create :create_cart, :auto_add_user_attributes
 
   def create_cart
-    Cart.create!(user_id: self.id, owner_name: self.firstname.capitalize, total: 0, quantity: 0)
+    Cart.create!(user_id: self.id, owner_name: self.firstname.capitalize, total: 0)
   end
 
   def auto_add_user_attributes

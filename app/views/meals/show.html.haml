@@ -3,7 +3,8 @@
   - if @meal_count > 0
     .order-status-bar
       .status
-        ="You have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
+        -# binding.pry
+        ="#{current_user.firstname}, you have #{pluralize(@meal_count, "#{@meal.name} order")} in your cart." unless current_user.blank? || current_user.cart.blank?
   .learn-about-meal
     / .close-x X
     .name= @meal.name

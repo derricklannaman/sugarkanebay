@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325191331) do
+ActiveRecord::Schema.define(version: 20170414183948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170325191331) do
     t.integer  "user_id"
     t.string   "owner_name"
     t.decimal  "price"
-    t.integer  "quantity"
     t.decimal  "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,6 +87,17 @@ ActiveRecord::Schema.define(version: 20170325191331) do
     t.index ["user_id"], name: "index_meals_on_user_id", using: :btree
   end
 
+  create_table "order_histories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.decimal  "total"
+    t.integer  "quantity"
+    t.string   "guid"
+    t.date     "order_shipped_date"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["user_id"], name: "index_order_histories_on_user_id", using: :btree
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "meal_id"
@@ -109,9 +119,18 @@ ActiveRecord::Schema.define(version: 20170325191331) do
     t.index ["user_id"], name: "index_order_statuses_on_user_id", using: :btree
   end
 
+  create_table "ordered_item_histories", force: :cascade do |t|
+    t.integer  "order_history_id"
+    t.integer  "meal_id"
+    t.integer  "quantity"
+    t.decimal  "total_price"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["order_history_id"], name: "index_ordered_item_histories_on_order_history_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "meal_id"
     t.integer  "cart_id"
     t.decimal  "total"
     t.string   "order_items"
@@ -122,7 +141,6 @@ ActiveRecord::Schema.define(version: 20170325191331) do
     t.string   "guid"
     t.date     "order_shipped_date"
     t.index ["cart_id"], name: "index_orders_on_cart_id", using: :btree
-    t.index ["meal_id"], name: "index_orders_on_meal_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -157,11 +175,12 @@ ActiveRecord::Schema.define(version: 20170325191331) do
   add_foreign_key "meal_inventories", "inventories"
   add_foreign_key "meal_inventories", "meals"
   add_foreign_key "meals", "destinations"
+  add_foreign_key "order_histories", "users"
   add_foreign_key "order_items", "meals"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_statuses", "orders"
   add_foreign_key "order_statuses", "users"
+  add_foreign_key "ordered_item_histories", "order_histories"
   add_foreign_key "orders", "carts"
-  add_foreign_key "orders", "meals"
   add_foreign_key "orders", "users"
 end

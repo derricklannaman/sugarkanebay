@@ -5,8 +5,7 @@ class CartController < ApplicationController
 
   def show
     if current_user.cart.present?
-      order = current_user.cart.orders.where(order_status: 'pending-payment')
-                          .first
+      order = current_user.cart.orders.where(order_status: 'pending-payment').first
     end
     return if order.nil?
     order_item_info = []
@@ -63,8 +62,13 @@ class CartController < ApplicationController
 
   def cart_total
     return if current_user.cart.blank?
-    @cart_total = current_user.orders.where(order_status: 'pending-payment')
-                              .first.total
+    # binding.pry
+    if current_user.orders.where(order_status: 'pending-payment').present?
+      @cart_total = current_user.orders.where(order_status: 'pending-payment')
+                                .first.total
+    else
+      @cart_total
+    end
   end
 
   def check_cart_exist
