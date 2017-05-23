@@ -17,11 +17,13 @@ class ApplicationController < ActionController::Base
 
   def number_of_items_in_cart
     if current_user.cart.present? && current_user.orders.present?
-      if current_user.orders.first.order_status == "pending-payment"
-        current_user.orders.where(order_status: 'pending-payment').first.order_items.sum(:quantity)
-      else
-        0
-      end
+      current_user.orders.first.order_items.sum(:quantity)
+      # binding.pry
+      # if current_user.orders.first.order_status == "pending-payment"
+      #   current_user.orders.where(order_status: 'pending-payment').first.order_items.sum(:quantity)
+      # else
+      #   0
+      # end
     else
       0
     end

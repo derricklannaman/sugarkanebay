@@ -18,11 +18,11 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  # gem 'byebug', platform: :mri
 end
 
 group :production do
-  gem 'pg'
+
 end
 
 group :development do
@@ -45,4 +45,5 @@ end
 gem 'devise'
 gem 'stripe'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'alertifyjs-rails'
 # gem 'devise-bootstrapped', '~> 0.1.1'

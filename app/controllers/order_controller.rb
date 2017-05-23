@@ -51,7 +51,7 @@ class OrderController < ApplicationController
         order.quantity = order.order_items.pluck(:quantity).sum
         order.save!
       end
-      flash[:notice] = "#{params[:meal_name]} has been added to your cart"
+      flash[:notice] = "#{params[:meal_name]} added to your cart"
       redirect_to shop_path
     else
       flash[:notice] = "Please sign up or sign in first."
@@ -71,7 +71,7 @@ class OrderController < ApplicationController
     current_orders.total = order_item.order.order_items.sum(:total_price)
     current_orders.quantity = order_item.order.order_items.sum(:quantity)
     current_orders.save
-    flash[:notice] = "Another #{meal.name} has been added from your cart"
+    flash[:notice] = "Another #{meal.name} added from your cart"
     redirect_back fallback_location: cart_path(current_user.cart)
   end
 
@@ -95,7 +95,7 @@ class OrderController < ApplicationController
       current_orders.total = order_item.order.order_items.sum(:total_price)
       current_orders.quantity = order_item.order.order_items.sum(:quantity)
       current_orders.save
-      flash[:notice] = "#{meal.name} has been removed from your cart"
+      flash[:notice] = "#{meal.name} removed from your cart"
     end
     redirect_back fallback_location: cart_path(current_user.cart)
   end

@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {
   // manageNavigationColors();
 
+ alertify.set('notifier','position', 'top-right');
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 

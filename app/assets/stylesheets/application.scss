@@ -10,9 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require alertify
+ *= require alertify/default
+ *= require alertify/bootstrap
  *= require_tree .
  *= require_self
  */
+
+.alertify-notifier .ajs-message.ajs-success {
+  margin-top: 100px;
+  font-size: 18px;
+  color: #23527c;
+  font-weight: bolder;
+  background-color: #ffce00;
+  border: none;
+  width: 280px;
+  text-shadow: none;
+}
 
 section.landing.landing--above {
   background-image: url('tropical_paradise.jpg');
